@@ -243,18 +243,18 @@ public class Search {
 			int collectible,
 			String locale)
 	
-	throws UnirestException {		
-			String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/types/";
-			searchParams += name + "?"
-				+ "callback=" + callback + "&"
-				+ "collectible=" + Integer.toString(collectible) + "&"
-				+ "locale=" + locale;
+	throws UnirestException {
+		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/types/";
+		searchParams += name + "?"
+			+ "callback=" + callback + "&"
+			+ "collectible=" + Integer.toString(collectible) + "&"
+			+ "locale=" + locale;
 			
-			HttpResponse<JsonNode> response = Unirest.get(searchParams)
-				.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
-				.header("Accept", "application/json")
-				.asJson();
-			
+		HttpResponse<JsonNode> response = Unirest.get(searchParams)
+			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
+			.header("Accept", "application/json")
+			.asJson();
+
 		return response;
 	}
 	
