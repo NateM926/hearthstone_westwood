@@ -21,14 +21,7 @@ public class Search {
 	{
 		return null;
 	}
-	
-	public HttpResponse<JsonNode> SearchBack(
-			String callback, 
-			String locale)
-	{
-		return null;
-	}
-	
+
 	public HttpResponse<JsonNode> SearchName(
 			String name,
 			String callback,
@@ -111,13 +104,6 @@ public class Search {
 			int cost,
 			int durability,
 			int health,
-			String locale)
-	{
-		return null;
-	}
-	
-	public HttpResponse<JsonNode> SearchInfo(
-			String callback,
 			String locale)
 	{
 		return null;
