@@ -6,12 +6,12 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class Search {
-
-	
 	public Search(String searchField) 
 	{
 		
 	}
+	
+	//Returns all available Hearthstone cards including non collectible cards.
 	public HttpResponse<JsonNode> SearchAll(
 			int attack,
 			String callback,
@@ -256,5 +256,4 @@ public class Search {
 
 		return response;
 	}
-	
 }
