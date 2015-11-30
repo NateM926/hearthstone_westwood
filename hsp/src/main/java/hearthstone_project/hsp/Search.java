@@ -10,57 +10,124 @@ public class Search {
 		System.out.println("");
 	}
 	
-	public HttpResponse<JsonNode> SearchAll()
+	public HttpResponse<JsonNode> SearchAll(
+			int attack,
+			String callback,
+			int collectible,
+			int cost,
+			int durability,
+			int health,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchBack()
+	public HttpResponse<JsonNode> SearchBack(
+			String callback, 
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchName()
+	public HttpResponse<JsonNode> SearchName(
+			String name,
+			String callback,
+			int collectible,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchSet()
+	public HttpResponse<JsonNode> SearchSet(
+			String set,
+			int attack,
+			String callback,
+			int collectible,
+			int cost,
+			int durability,
+			int health,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchClass()
+	public HttpResponse<JsonNode> SearchClass(
+			String playerClass,
+			int attack,
+			String callback,
+			int collectible,
+			int cost,
+			int durability,
+			int health,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchFaction()
+	public HttpResponse<JsonNode> SearchFaction(
+			String faction,
+			int attack,
+			String callback,
+			int collectible,
+			int cost,
+			int durability,
+			int health,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchQuality()
+	public HttpResponse<JsonNode> SearchQuality(
+			String quality,
+			int attack,
+			String callback,
+			int collectible,
+			int cost,
+			int durability,
+			int health,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchRace()
+	public HttpResponse<JsonNode> SearchRace(
+			String race,
+			int attack,
+			String callback,
+			int collectible,
+			int cost,
+			int durability,
+			int health,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchType()
+	public HttpResponse<JsonNode> SearchType(
+			String type,
+			int attack,
+			String callback,
+			int collectible,
+			int cost,
+			int durability,
+			int health,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchInfo()
+	public HttpResponse<JsonNode> SearchInfo(
+			String callback,
+			String locale)
 	{
 		return null;
 	}
 	
-	public HttpResponse<JsonNode> SearchCard()
+	public HttpResponse<JsonNode> SearchCard(
+			String name,
+			String callback,
+			int collectible,
+			String locale)
 	{
 		return null;
 	}
