@@ -1,14 +1,13 @@
 package hearthstone_project.hsp;
 
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.JButton;
+import javax.swing.*;
+
 import org.json.JSONObject;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -26,8 +25,16 @@ public class App extends Frame implements WindowListener,ActionListener
 	private static final long serialVersionUID = 1L;
 	GridBagLayout gridbag = new GridBagLayout();
     GridBagConstraints c = new GridBagConstraints();
-    JButton searchButton = new JButton("Search");
+    Insets padding = new Insets(5,5,5,5);	//object that pads the elements to space them out.
 
+    JButton searchButton = new JButton("Search");
+    JTextField searchBar = new JTextField("Search");
+    
+    JComboBox cardList = new JComboBox();
+    JComboBox deckList = new JComboBox();
+    
+    JPanel cardInfo = new JPanel();
+    
     public static void main( String[] args ) throws UnirestException
     {
     	App app = new App("Hearthstone Deck Builder");
@@ -39,20 +46,34 @@ public class App extends Frame implements WindowListener,ActionListener
 	public App(String title) {		
         setLayout(gridbag);
         c.fill = GridBagConstraints.BOTH;
+        c.insets=padding;
+        
         addWindowListener(this);
         searchButton.addActionListener(this);
-
-        c.gridx=0;c.gridy=0;
+        
+        c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;
+        add(searchBar,c);
+        
+        c.gridx=4;c.gridy=0;c.gridwidth=1;c.gridheight=1;
         add(searchButton,c);
+        
+        c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=1;c.weighty=2;
+        add(cardList,c);
+        
+        c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=2;
+        add(cardInfo,c);
+        
+        c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=1;c.weighty=2;
+        add(deckList,c);
+
 	}
  
     public static void testingResponse() throws UnirestException{
     	HttpResponse<JsonNode> response = Unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards")
     	    	.header("X-Mashape-Key", "0Ft11iQGTcmshEqprMjGICRQ0q1bp1jLSLojsnF6HWVrpPhAzO")
     	    	.asJson();    	
-    	System.out.println(response.toString());
-        JSONObject myObj = response.getBody().getObject();
-        System.out.println(myObj.toString());
+        JSONObject json = response.getBody().getObject();
+        System.out.println(json.toString());
     }
     
     //FRAME LISTENERS
