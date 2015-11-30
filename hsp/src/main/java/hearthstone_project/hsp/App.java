@@ -3,9 +3,16 @@ package hearthstone_project.hsp;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.awt.Graphics;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import org.json.JSONObject;
@@ -20,7 +27,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
  *
  */
 
-public class App extends Frame implements WindowListener,ActionListener
+public class App extends Frame implements WindowListener,ActionListener,ItemListener
 {	
 	private static final long serialVersionUID = 1L;
 	GridBagLayout gridbag = new GridBagLayout();
@@ -31,15 +38,20 @@ public class App extends Frame implements WindowListener,ActionListener
     JTextField searchBar = new JTextField("Search");
     
     
-    Object[] cards = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
-    JList cardList = new JList(cards);
-    JList deckList = new JList(cards);
+    String[] cards = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
+    JList<String[]> cardList = new JList(cards);
+    JList<String[]> deckList = new JList(cards);
     JScrollPane cardListScroller = new JScrollPane(cardList);
     JScrollPane deckListScroller = new JScrollPane(deckList);
 
     JPanel cardInfo = new JPanel();
     
-    public static void main( String[] args ) throws UnirestException
+    //Currently not working: Pictures
+    String IMG_PATH = "src/test_pic.gif";
+	BufferedImage img = ImageIO.read(new File(IMG_PATH));
+
+    
+    public static void main( String[] args ) throws UnirestException, IOException
     {
     	App app = new App("Hearthstone Deck Builder");
         app.pack();
@@ -47,13 +59,14 @@ public class App extends Frame implements WindowListener,ActionListener
         app.setVisible(true);
     }
 
-	public App(String title) {		
+	public App(String title) throws IOException {			
         setLayout(gridbag);
         c.fill = GridBagConstraints.BOTH;
         c.insets=padding;
 
         addWindowListener(this);
         searchButton.addActionListener(this);
+        //cardList.addItemListener(this);
         
         c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
         add(searchBar,c);
@@ -70,8 +83,14 @@ public class App extends Frame implements WindowListener,ActionListener
         
         c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=0.5;c.weighty=3;
         add(deckListScroller,c);
-
 	}
+	
+	//Not currently drawing anywhere
+    protected void paintComponent(Graphics g) {
+        //super.paintComponent(g);
+        g.drawImage(img, 0, 0, null); // see javadoc for more info on the parameters            
+    }
+
  
     public static void testingResponse() throws UnirestException{
     	HttpResponse<JsonNode> response = Unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards")
@@ -93,4 +112,9 @@ public class App extends Frame implements WindowListener,ActionListener
 	public void windowIconified(WindowEvent arg0) {}
 	public void windowOpened(WindowEvent arg0) {}
 	public void actionPerformed(ActionEvent arg0) {}
+
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
