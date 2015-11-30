@@ -9,7 +9,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
-
 import org.json.JSONObject;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -18,15 +17,12 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 /**
- * Hello world!
+ * This is the GUI Application. Run this to use the program.
  *
  */
+
 public class App extends Frame implements WindowListener,ActionListener
-{
-	/**
-	 * Java Swing GUI
-	 */
-	
+{	
 	private static final long serialVersionUID = 1L;
 	GridBagLayout gridbag = new GridBagLayout();
     GridBagConstraints c = new GridBagConstraints();
@@ -38,7 +34,6 @@ public class App extends Frame implements WindowListener,ActionListener
         app.pack();
         app.setSize(650,300);
         app.setVisible(true);
-    	testingResponse();
     }
 
 	public App(String title) {		
@@ -57,42 +52,19 @@ public class App extends Frame implements WindowListener,ActionListener
     	    	.asJson();    	
     	System.out.println(response.toString());
         JSONObject myObj = response.getBody().getObject();
-        System.out.println(myObj.toString()); 
-
+        System.out.println(myObj.toString());
     }
     
-	public void windowActivated(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void windowClosed(WindowEvent arg0) {}
-	public void windowClosing(WindowEvent arg0) {
+    //FRAME LISTENERS
+    public void windowClosing(WindowEvent arg0) {
         dispose();
         System.exit(0);		
 	}
-	public void windowDeactivated(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void windowDeiconified(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void windowIconified(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void windowOpened(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void windowClosed(WindowEvent arg0) {}
+	public void windowActivated(WindowEvent arg0) {}
+	public void windowDeactivated(WindowEvent arg0) {}
+	public void windowDeiconified(WindowEvent arg0) {}
+	public void windowIconified(WindowEvent arg0) {}
+	public void windowOpened(WindowEvent arg0) {}
+	public void actionPerformed(ActionEvent arg0) {}
 }
