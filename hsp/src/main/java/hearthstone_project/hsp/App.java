@@ -9,6 +9,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
+
 import org.json.JSONObject;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -26,7 +28,9 @@ public class App extends Frame implements WindowListener,ActionListener
 	private static final long serialVersionUID = 1L;
 	GridBagLayout gridbag = new GridBagLayout();
     GridBagConstraints c = new GridBagConstraints();
+
     JButton searchButton = new JButton("Search");
+    JTextField searchBar = new JTextField("Search");
 
     public static void main( String[] args ) throws UnirestException
     {
@@ -41,8 +45,11 @@ public class App extends Frame implements WindowListener,ActionListener
         c.fill = GridBagConstraints.BOTH;
         addWindowListener(this);
         searchButton.addActionListener(this);
-
+        
         c.gridx=0;c.gridy=0;
+        add(searchBar,c);
+        
+        c.gridx=1;c.gridy=0;
         add(searchButton,c);
 	}
  
@@ -50,9 +57,8 @@ public class App extends Frame implements WindowListener,ActionListener
     	HttpResponse<JsonNode> response = Unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards")
     	    	.header("X-Mashape-Key", "0Ft11iQGTcmshEqprMjGICRQ0q1bp1jLSLojsnF6HWVrpPhAzO")
     	    	.asJson();    	
-    	System.out.println(response.toString());
-        JSONObject myObj = response.getBody().getObject();
-        System.out.println(myObj.toString());
+        JSONObject json = response.getBody().getObject();
+        System.out.println(json.toString());
     }
     
     //FRAME LISTENERS
