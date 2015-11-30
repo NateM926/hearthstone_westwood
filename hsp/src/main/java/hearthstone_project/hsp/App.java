@@ -30,9 +30,13 @@ public class App extends Frame implements WindowListener,ActionListener
     JButton searchButton = new JButton("Search");
     JTextField searchBar = new JTextField("Search");
     
-    JComboBox cardList = new JComboBox();
-    JComboBox deckList = new JComboBox();
     
+    Object[] cards = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
+    JList cardList = new JList(cards);
+    JList deckList = new JList(cards);
+    JScrollPane cardListScroller = new JScrollPane(cardList);
+    JScrollPane deckListScroller = new JScrollPane(deckList);
+
     JPanel cardInfo = new JPanel();
     
     public static void main( String[] args ) throws UnirestException
@@ -47,24 +51,25 @@ public class App extends Frame implements WindowListener,ActionListener
         setLayout(gridbag);
         c.fill = GridBagConstraints.BOTH;
         c.insets=padding;
-        
+
         addWindowListener(this);
         searchButton.addActionListener(this);
         
-        c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;
+        c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
         add(searchBar,c);
         
-        c.gridx=4;c.gridy=0;c.gridwidth=1;c.gridheight=1;
+        c.gridx=4;c.gridy=0;c.gridwidth=1;c.gridheight=1;c.weightx=0.5;c.weighty=0;
         add(searchButton,c);
         
-        c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=1;c.weighty=2;
-        add(cardList,c);
+        c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=1;c.weighty=3;
+
+        add(cardListScroller,c);
         
-        c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=2;
+        c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;
         add(cardInfo,c);
         
-        c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=1;c.weighty=2;
-        add(deckList,c);
+        c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=0.5;c.weighty=3;
+        add(deckListScroller,c);
 
 	}
  
