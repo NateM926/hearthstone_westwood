@@ -5,10 +5,12 @@ import com.mashape.unirest.http.JsonNode;
 
 public class Search {
 
-	public Search() 
+	
+	public Search(String searchField) 
 	{
-		System.out.println("");
+		
 	}
+	
 	
 	public HttpResponse<JsonNode> SearchAll(
 			int attack,
