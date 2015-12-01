@@ -1,27 +1,3 @@
-/*
- From Crockett:
-
-I'm tired; going to bed.
-
-I think everything I wrote works, but not totally sure; all totally untested. 
-(ran a few little tests on the card constructor, but not even for most of the fields being parsed)
-
-The Card() constructor takes in a string of JSON (a single card) and turns it into something a 
-little easier to work with. 
-
-I added two static methods to Search. getNextCardEnd() is just a helper function for getCardList(). 
-getCardList now returns an ArrayList of cards, but we can change that later to give Chaw the data 
-structures hardon he deserves. It just converts the HttpResponse straight into cards.
-
-Features to be added: Right now, we can do a search, then convert that to a list of Cards. We still 
-need to figure out everything on the deck side of things. We also need to do all the stuff taking 
-these lists of cards, and displaying them on the screen somehow -- Nate's end of things.
-Also, I need to add a few more values to the Card class and update the constructor to reflect 
-the sorts of values that your code can search for.
-
-Overall, I think it looks pretty good; it's been much easier than I thought it'd be. Good luck, man! <3 you!
- */
-
 package hearthstone_project.hsp;
 
 import java.util.ArrayList;
