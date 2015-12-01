@@ -43,25 +43,25 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     JList<String[]> deckList = new JList(cards);
     JScrollPane cardListScroller = new JScrollPane(cardList);
     JScrollPane deckListScroller = new JScrollPane(deckList);
-
-    JPanel cardInfo = new JPanel();
     
     //Currently not working: Pictures
     String IMG_PATH = "src/test_pic.gif";
 	BufferedImage img = ImageIO.read(new File(IMG_PATH));
 	JLabel picLabel = new JLabel(new ImageIcon(img));
 	
-	/*
+	JScrollPane cardPic = new JScrollPane(picLabel);
+	JTextPane cardInfo = new JTextPane();
+	
 	JButton addCardButton = new JButton("Add Card");
 	JButton removeCardButton = new JButton("Remove Card");
-	*/
+	
 
     
     public static void main( String[] args ) throws UnirestException, IOException
     {
     	App app = new App("Hearthstone Deck Builder");
         app.pack();
-        app.setSize(650,300);
+        app.setSize(750,800);
         app.setVisible(true);
     }
 
@@ -80,26 +80,27 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         c.gridx=4;c.gridy=0;c.gridwidth=1;c.gridheight=1;c.weightx=0.5;c.weighty=0;
         add(searchButton,c);
         
-        c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=1;c.weighty=3;
+        c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=6;c.weightx=1;c.weighty=3;
         add(cardListScroller,c);
-        
-        c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;
-        add(cardInfo,c);
-        
-        c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=0.5;c.weighty=3;
+
+        c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=6;c.weightx=0.5;c.weighty=3;
         add(deckListScroller,c);
-        
-        c.gridx=6;c.gridy=2;
-        add(picLabel,c);
-        
+
+        c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;
+        add(cardPic,c);
+
+        c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=0;
+        add(cardInfo,c);
+        cardInfo.setBackground(Color.LIGHT_GRAY);
+        cardInfo.setText("HEARTHSTONE TEST:\n\n\nasdfasdfas\n\n\ndfa\n\n\n\ns");
+                
         //Trying to place these underneath the scrollers!!
-        /*
-        c.gridx=0;c.gridy=2;c.gridwidth=1;c.gridheight=1;c.weightx=1;c.weighty=1;
-        add(addCardButton);
+        c.gridx=0;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
+        add(addCardButton,c);
         
-        c.gridx=4;c.gridy=2;c.gridwidth=1;c.gridheight=1;c.weightx=1;c.weighty=1;
-        add(removeCardButton);
-		*/
+        c.gridx=4;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
+        add(removeCardButton,c);
+		
         
         
 	}
