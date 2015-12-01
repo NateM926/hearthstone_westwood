@@ -169,10 +169,5 @@ public class Card {
 
 	public static void main(String[] args)
 	{
-		System.out.println("I eat dick".indexOf("eat"));
-		String json = "{\"cardId\":\"NAX9_04\",\"name\":\"Sir Zeliek\"}";
-		Card ass = new Card(json);
-		System.out.println(ass.cardId);
-		System.out.println(ass.name);
 	}
 }
