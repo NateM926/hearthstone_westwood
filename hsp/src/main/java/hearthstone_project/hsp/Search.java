@@ -1,4 +1,30 @@
+/*
+ From Crockett:
+
+I'm tired; going to bed.
+
+I think everything I wrote works, but not totally sure; all totally untested. 
+(ran a few little tests on the card constructor, but not even for most of the fields being parsed)
+
+The Card() constructor takes in a string of JSON (a single card) and turns it into something a 
+little easier to work with. 
+
+I added two static methods to Search. getNextCardEnd() is just a helper function for getCardList(). 
+getCardList now returns an ArrayList of cards, but we can change that later to give Chaw the data 
+structures hardon he deserves. It just converts the HttpResponse straight into cards.
+
+Features to be added: Right now, we can do a search, then convert that to a list of Cards. We still 
+need to figure out everything on the deck side of things. We also need to do all the stuff taking 
+these lists of cards, and displaying them on the screen somehow -- Nate's end of things.
+Also, I need to add a few more values to the Card class and update the constructor to reflect 
+the sorts of values that your code can search for.
+
+Overall, I think it looks pretty good; it's been much easier than I thought it'd be. Good luck, man! <3 you!
+ */
+
 package hearthstone_project.hsp;
+
+import java.util.ArrayList;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -256,4 +282,51 @@ public class Search {
 
 		return response;
 	}
+	
+	// UNTESTED
+	// PRE: takes in HttpResponse from a search
+	// POST: returns a list of Cards in the order they were received
+	public static ArrayList<Card> getCardList(HttpResponse<JsonNode> response)
+	{
+		ArrayList<Card> cardList = new ArrayList<Card>();
+		String rawJson = response.getBody().getObject().toString();
+		rawJson = rawJson.substring(rawJson.indexOf('['));			// trims off leading '{'
+		Card nextCard;
+		int nextCardEndIndex = getNextCardEnd(rawJson);
+		while (nextCardEndIndex != -1)
+		{
+			nextCard = new Card(rawJson.substring(0, nextCardEndIndex));
+			cardList.add(nextCard);
+			rawJson = rawJson.substring(nextCardEndIndex);
+		}
+		return cardList;
+	}
+	
+	// UNTESTED
+	// PRE: rawJson is of the form {<card object>}, {<card object>}, ... i.e., no leading braces.
+	// POST: returns index after the end of the first card object, or -1 if there are no cards.
+	public static int getNextCardEnd(String rawJson)
+	{
+		int bracesOpen = 0;
+		int currentIndex = rawJson.indexOf("{") + 1;
+		if (currentIndex == -1)
+		{
+			return -1;
+		}
+		char nextChar = rawJson.charAt(currentIndex);
+		while (nextChar != '}' || bracesOpen > 0)		// skips over brace pairs interior to the card body
+		{
+			if (nextChar == '{')
+			{
+				bracesOpen ++;
+			}
+			if (nextChar == '}')
+			{
+				bracesOpen--;
+			}
+			currentIndex++;
+			nextChar = rawJson.charAt(currentIndex);
+		}
+		return currentIndex + 1;						// return the index AFTER the end of the card
+	}													//   so as not to include a spare '}'.
 }
