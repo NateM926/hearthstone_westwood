@@ -49,6 +49,12 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     //Currently not working: Pictures
     String IMG_PATH = "src/test_pic.gif";
 	BufferedImage img = ImageIO.read(new File(IMG_PATH));
+	JLabel picLabel = new JLabel(new ImageIcon(img));
+	
+	/*
+	JButton addCardButton = new JButton("Add Card");
+	JButton removeCardButton = new JButton("Remove Card");
+	*/
 
     
     public static void main( String[] args ) throws UnirestException, IOException
@@ -75,7 +81,6 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         add(searchButton,c);
         
         c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=1;c.weighty=3;
-
         add(cardListScroller,c);
         
         c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;
@@ -83,6 +88,20 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         
         c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=5;c.weightx=0.5;c.weighty=3;
         add(deckListScroller,c);
+        
+        c.gridx=6;c.gridy=2;
+        add(picLabel,c);
+        
+        //Trying to place these underneath the scrollers!!
+        /*
+        c.gridx=0;c.gridy=2;c.gridwidth=1;c.gridheight=1;c.weightx=1;c.weighty=1;
+        add(addCardButton);
+        
+        c.gridx=4;c.gridy=2;c.gridwidth=1;c.gridheight=1;c.weightx=1;c.weighty=1;
+        add(removeCardButton);
+		*/
+        
+        
 	}
 	
 	//Not currently drawing anywhere
