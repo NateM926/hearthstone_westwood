@@ -32,29 +32,31 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	private static final long serialVersionUID = 1L;
 	GridBagLayout gridbag = new GridBagLayout();
     GridBagConstraints c = new GridBagConstraints();
-    Insets padding = new Insets(5,5,5,5);	//object that pads the elements to space them out.
+    Insets padding = new Insets(5,5,5,5);				//object that pads the elements to space them out.
 
+    //Search Bar:
     JButton searchButton = new JButton("Search");
     JTextField searchBar = new JTextField("Search");
     
-    
-    String[] cards = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
+    //Card Lists:
+    String[] cards = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","vewac","cwewe",
+    		"asdf","vewac","cwewe","asdf","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas",
+    		"vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
     JList<String[]> cardList = new JList(cards);
     JList<String[]> deckList = new JList(cards);
     JScrollPane cardListScroller = new JScrollPane(cardList);
     JScrollPane deckListScroller = new JScrollPane(deckList);
-    
-    //Currently not working: Pictures
+	JButton addCardButton = new JButton("Add Card");
+	JButton removeCardButton = new JButton("Remove Card");
+
+    //Pictures:
     String IMG_PATH = "src/test_pic.gif";
 	BufferedImage img = ImageIO.read(new File(IMG_PATH));
 	JLabel picLabel = new JLabel(new ImageIcon(img));
-	
+
+	//Card Information:
 	JScrollPane cardPic = new JScrollPane(picLabel);
 	JTextPane cardInfo = new JTextPane();
-	
-	JButton addCardButton = new JButton("Add Card");
-	JButton removeCardButton = new JButton("Remove Card");
-	
 
     
     public static void main( String[] args ) throws UnirestException, IOException
@@ -72,7 +74,6 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 
         addWindowListener(this);
         searchButton.addActionListener(this);
-        //cardList.addItemListener(this);
         
         c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
         add(searchBar,c);
@@ -91,10 +92,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 
         c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=0;
         add(cardInfo,c);
-        cardInfo.setBackground(Color.LIGHT_GRAY);
         cardInfo.setText("HEARTHSTONE TEST:\n\n\nasdfasdfas\n\n\ndfa\n\n\n\ns");
                 
-        //Trying to place these underneath the scrollers!!
         c.gridx=0;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
         add(addCardButton,c);
         
@@ -104,13 +103,6 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         
         
 	}
-	
-	//Not currently drawing anywhere
-    protected void paintComponent(Graphics g) {
-        //super.paintComponent(g);
-        g.drawImage(img, 0, 0, null); // see javadoc for more info on the parameters            
-    }
-
  
     public static void testingResponse() throws UnirestException{
     	HttpResponse<JsonNode> response = Unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards")
@@ -132,9 +124,5 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	public void windowIconified(WindowEvent arg0) {}
 	public void windowOpened(WindowEvent arg0) {}
 	public void actionPerformed(ActionEvent arg0) {}
-
-	public void itemStateChanged(ItemEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void itemStateChanged(ItemEvent arg0) {}
 }
