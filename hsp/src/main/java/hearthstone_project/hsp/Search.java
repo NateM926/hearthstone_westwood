@@ -82,7 +82,7 @@ public class Search {
 			// + "collectible=" + Integer.toString(collectible) + "&"
 			+ "cost=" + Integer.toString(cost) + "&"
 			+ "durability=" + Integer.toString(durability) + "&"
-			+ "health=" + Integer.toString(health) + "&"
+			+ "health=" + Integer.toString(health) + "&";
 			//+ "locale=" + locale;
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
