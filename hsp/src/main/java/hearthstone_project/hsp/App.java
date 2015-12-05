@@ -125,6 +125,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	public void windowOpened(WindowEvent arg0) {}
 	public void actionPerformed(ActionEvent arg0) {	
 		if(arg0.getSource() == searchButton) {
+			Search searcher = new Search();
+			searcher.DoSearch(searchBar.getText());
 		}
 	}
 	public void itemStateChanged(ItemEvent arg0) {}
