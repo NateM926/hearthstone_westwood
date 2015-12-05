@@ -1,6 +1,8 @@
 package hearthstone_project.hsp;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -8,7 +10,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class Search {
-	public Search(String searchField) 
+	public Search(String searchString) 
 	{
 		
 	}
@@ -75,7 +77,7 @@ public class Search {
 	throws UnirestException {		
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/sets/";
 		searchParams += set + "?"
-			+ "attack=" + Integer.toString(attack) + "&"
+			+ ((set != null) ? "attack=" + Integer.toString(attack) + "&" : "")
 			+ "callback=" + callback + "&"
 			+ "collectible=" + Integer.toString(collectible) + "&"
 			+ "cost=" + Integer.toString(cost) + "&"
@@ -305,4 +307,57 @@ public class Search {
 		}
 		return currentIndex + 1;						// return the index AFTER the end of the card
 	}													//   so as not to include a spare '}'.
+	
+	//This method parses the input string for search parameters and performs a request based on those parameters
+	public ArrayList<Card> DoSearch(String searchString)
+	{
+		//Scanner s = new Scanner(searchString);
+		String name = null;
+		String type = null;
+		int attack = -1;
+		int health = -1;
+		String set = null;
+		int cost = -1;
+		int durability = -1;
+		String text = null;
+		
+		StringTokenizer st = new StringTokenizer(searchString);
+		while (st.hasMoreTokens()) {
+			String nextToken = st.nextToken();
+			if (nextToken.startsWith("-n"))
+			{
+				name = st.nextToken();
+			} 
+			else if (nextToken.startsWith("-t"))
+			{
+				type = st.nextToken();
+			} 
+			else if (nextToken.startsWith("-a"))
+			{
+				attack = Integer.valueOf(st.nextToken());
+			} 
+			else if (nextToken.startsWith("-h"))
+			{
+				health = Integer.valueOf(st.nextToken());
+			} 
+			else if (nextToken.startsWith("-s"))
+			{
+				set = st.nextToken();
+			} 
+			else if (nextToken.startsWith("-c"))
+			{
+				cost = Integer.valueOf(st.nextToken());
+			} 
+			else if (nextToken.startsWith("-d"))
+			{
+				durability = Integer.valueOf(st.nextToken());
+			}
+			else if (nextToken.startsWith("-x"))
+			{
+				text = st.nextToken();
+			}
+	         
+	     }
+		return null;
+	}
 }

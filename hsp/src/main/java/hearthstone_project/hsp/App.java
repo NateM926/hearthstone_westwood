@@ -33,7 +33,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	GridBagLayout gridbag = new GridBagLayout();
     GridBagConstraints c = new GridBagConstraints();
     Insets padding = new Insets(5,5,5,5);				//object that pads the elements to space them out.
-
+    private Search searcher;
+    
     //Search Bar:
     JButton searchButton = new JButton("Search");
     JTextField searchBar = new JTextField("Search");
@@ -99,8 +100,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         
         c.gridx=4;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
         add(removeCardButton,c);
-		
-        
+
         
 	}
  
@@ -123,6 +123,9 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	public void windowDeiconified(WindowEvent arg0) {}
 	public void windowIconified(WindowEvent arg0) {}
 	public void windowOpened(WindowEvent arg0) {}
-	public void actionPerformed(ActionEvent arg0) {}
+	public void actionPerformed(ActionEvent arg0) {	
+		if(arg0.getSource() == searchButton) {
+		}
+	}
 	public void itemStateChanged(ItemEvent arg0) {}
 }
