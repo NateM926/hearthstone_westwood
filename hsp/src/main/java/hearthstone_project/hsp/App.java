@@ -121,11 +121,11 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     		cardInfo.setText(searchText);
     	}
     	else if (arg0.getSource()==addCardButton){			//If the add card button is clicked
-    		String selectedAddCard = cardList.getSelectedValue().toString()+"";
+    		String selectedAddCard = cardList.getSelectedValuesList().toString();    		
     		cardInfo.setText(selectedAddCard);
     	}
     	else if (arg0.getSource()==removeCardButton){		//If the remove card button is clicked
-    		String selectedRemoveCard = deckList.getSelectedValue().toString()+"";
+    		String selectedRemoveCard = deckList.getSelectedValuesList().toString();    		
     		cardInfo.setText(selectedRemoveCard);
     	}
 
