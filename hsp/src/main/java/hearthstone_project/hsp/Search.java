@@ -18,22 +18,18 @@ public class Search {
 	//Returns all available Hearthstone cards including non collectible cards.
 	public HttpResponse<JsonNode> SearchAll(
 			int attack,
-			String callback,
 			int collectible,
 			int cost,
 			int durability,
-			int health,
-			String locale) 
+			int health) 
 	
 	throws UnirestException {
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards?";
 		searchParams += ((attack != -1) ? "attack=" + Integer.toString(attack) + "&" : "")
-			//+ "callback=" + callback + "&"
-			+ "collectible=" + Integer.toString(collectible) + "&"
-			+ "cost=" + Integer.toString(cost) + "&"
-			+ "durability=" + Integer.toString(durability) + "&"
-			+ "health=" + Integer.toString(health) + "&"
-			+ "locale=" + locale;
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible) + "&" : "")
+			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
+			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
+			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -45,16 +41,14 @@ public class Search {
 	//Returns cards by partial name.
 	public HttpResponse<JsonNode> SearchName(
 			String name,
-			String callback,
-			int collectible,
-			String locale)
+			int collectible)
 	
 	throws UnirestException {
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/";
 		searchParams += name + "?"
 			//+ "callback=" + callback + "&"
 			//+ "locale=" + locale + "&"
-			+ "collectible=" + Integer.toString(collectible);
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible): "");
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -67,23 +61,19 @@ public class Search {
 	public HttpResponse<JsonNode> SearchSet(
 			String set,
 			int attack,
-			String callback,
 			int collectible,
 			int cost,
 			int durability,
-			int health,
-			String locale)
+			int health)
 	
 	throws UnirestException {		
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/sets/";
 		searchParams += ((set != null) ? set + "?" : "")
 			+ ((attack != -1) ? "attack=" + Integer.toString(attack) + "&" : "")
-			// + "callback=" + callback + "&"
-			// + "collectible=" + Integer.toString(collectible) + "&"
-			+ "cost=" + Integer.toString(cost) + "&"
-			+ "durability=" + Integer.toString(durability) + "&"
-			+ "health=" + Integer.toString(health) + "&";
-			//+ "locale=" + locale;
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible) + "&" : "")
+			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
+			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
+			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -96,23 +86,19 @@ public class Search {
 	public HttpResponse<JsonNode> SearchClass(
 			String playerClass,
 			int attack,
-			String callback,
 			int collectible,
 			int cost,
 			int durability,
-			int health,
-			String locale)
+			int health)
 	
 	throws UnirestException {
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/";
 		searchParams += playerClass + "?"
 			+ ((attack != -1) ? "attack=" + Integer.toString(attack) + "&" : "")
-			//+ "callback=" + callback + "&"
-			+ "collectible=" + Integer.toString(collectible) + "&"
-			+ "cost=" + Integer.toString(cost) + "&"
-			+ "durability=" + Integer.toString(durability) + "&"
-			//+ "locale=" + locale + &;
-			+ "health=" + Integer.toString(health);
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible) + "&" : "")
+			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
+			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
+			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
 			
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
@@ -127,23 +113,19 @@ public class Search {
 	public HttpResponse<JsonNode> SearchFaction(
 			String faction,
 			int attack,
-			String callback,
 			int collectible,
 			int cost,
 			int durability,
-			int health,
-			String locale)
+			int health)
 					
 	throws UnirestException {		
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/factions/";
 		searchParams += faction + "?"
 			+ ((attack != -1) ? "attack=" + Integer.toString(attack) + "&" : "")
-			+ "callback=" + callback + "&"
-			+ "collectible=" + Integer.toString(collectible) + "&"
-			+ "cost=" + Integer.toString(cost) + "&"
-			+ "durability=" + Integer.toString(durability) + "&"
-			+ "health=" + Integer.toString(health) + "&"
-			+ "locale=" + locale;
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible) + "&" : "")
+			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
+			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
+			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -156,23 +138,19 @@ public class Search {
 	public HttpResponse<JsonNode> SearchQuality(
 			String quality,
 			int attack,
-			String callback,
 			int collectible,
 			int cost,
 			int durability,
-			int health,
-			String locale)
+			int health)
 					
 	throws UnirestException {		
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/qualities/";
 		searchParams += quality + "?"
 			+ ((attack != -1) ? "attack=" + Integer.toString(attack) + "&" : "")
-			+ "callback=" + callback + "&"
-			+ "collectible=" + Integer.toString(collectible) + "&"
-			+ "cost=" + Integer.toString(cost) + "&"
-			+ "durability=" + Integer.toString(durability) + "&"
-			+ "health=" + Integer.toString(health) + "&"
-			+ "locale=" + locale;
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible) + "&" : "")
+			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
+			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
+			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -185,23 +163,19 @@ public class Search {
 	public HttpResponse<JsonNode> SearchRace(
 			String race,
 			int attack,
-			String callback,
 			int collectible,
 			int cost,
 			int durability,
-			int health,
-			String locale)
+			int health)
 					
 	throws UnirestException {		
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/races/";
 		searchParams += race + "?"
 			+ ((attack != -1) ? "attack=" + Integer.toString(attack) + "&" : "")
-			+ "callback=" + callback + "&"
-			+ "collectible=" + Integer.toString(collectible) + "&"
-			+ "cost=" + Integer.toString(cost) + "&"
-			+ "durability=" + Integer.toString(durability) + "&"
-			+ "health=" + Integer.toString(health) + "&"
-			+ "locale=" + locale;
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible) + "&" : "")
+			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
+			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
+			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -214,7 +188,6 @@ public class Search {
 	public HttpResponse<JsonNode> SearchType(
 			String type,
 			int attack,
-			String callback,
 			int collectible,
 			int cost,
 			int durability,
@@ -225,12 +198,10 @@ public class Search {
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/types/";
 		searchParams += type + "?"
 			+ ((attack != -1) ? "attack=" + Integer.toString(attack) + "&" : "")
-			+ "callback=" + callback + "&"
-			+ "collectible=" + Integer.toString(collectible) + "&"
-			+ "cost=" + Integer.toString(cost) + "&"
-			+ "durability=" + Integer.toString(durability) + "&"
-			+ "health=" + Integer.toString(health) + "&"
-			+ "locale=" + locale;
+			+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible) + "&" : "")
+			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
+			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
+			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -243,16 +214,12 @@ public class Search {
 	//Loatheb returns both the card and the boss.
 	public HttpResponse<JsonNode> SearchCard(
 			String name,
-			String callback,
-			int collectible,
-			String locale)
+			int collectible)
 	
 	throws UnirestException {
 		String searchParams = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/types/";
 		searchParams += name + "?"
-			+ "callback=" + callback + "&"
-			+ "collectible=" + Integer.toString(collectible) + "&"
-			+ "locale=" + locale;
+				+ ((collectible != -1) ?  "collectible=" + Integer.toString(collectible): "");
 			
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
@@ -365,7 +332,7 @@ public class Search {
 	     }
 		HttpResponse<JsonNode> response = null;
 		try {
-			response = SearchAll(attack, "", 1, cost, durability, health, "");
+			response = SearchAll(attack, 1, cost, durability, health);
 		} catch (UnirestException e) {
 			//handle exception
 		}
