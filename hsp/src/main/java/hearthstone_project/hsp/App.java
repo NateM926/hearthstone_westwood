@@ -10,6 +10,7 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
@@ -40,11 +41,10 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     JTextField searchBar = new JTextField("Search");
     
     //Card Lists:
-    String[] cards = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","vewac","cwewe",
-    		"asdf","vewac","cwewe","asdf","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas",
-    		"vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
-    JList<String[]> cardList = new JList(cards);
-    JList<String[]> deckList = new JList(cards);
+    DefaultListModel nameList = new DefaultListModel();
+    DefaultListModel decknameList = new DefaultListModel();
+    JList<String[]> cardList = new JList(nameList);
+    JList<String[]> deckList = new JList(decknameList);
     JScrollPane cardListScroller = new JScrollPane(cardList);
     JScrollPane deckListScroller = new JScrollPane(deckList);
 	JButton addCardButton = new JButton("Add Card");
@@ -117,12 +117,26 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     //FRAME LISTENERS
     public void actionPerformed(ActionEvent arg0) {
     	if (arg0.getSource()==searchButton){				//If the search button is clicked
-    		Search searcher = new Search();
-			searcher.DoSearch(searchBar.getText());
+    		
+    		ArrayList<Card> mycardlist = new ArrayList<Card>();
+    		String searchText = searchBar.getText();
+    		cardInfo.setText(searchText);
+            //ArrayList Test								//temporary for testing
+            Card testCard = new Card("id", "name", "type", "text", "imgGold", "img", "cardSet", 0, 0, 0, 0);
+            for(int i = 0; i < 100; i++)
+            {
+            	mycardlist.add(testCard);
+            	nameList.addElement(testCard.name);
+            }
+  
+            
+            //searchCardArrayList.add(testCard);
+     
     	}
     	else if (arg0.getSource()==addCardButton){			//If the add card button is clicked
     		String selectedAddCard = cardList.getSelectedValuesList().toString();    		
     		cardInfo.setText(selectedAddCard);
+    		decknameList.addElement(selectedAddCard);
     	}
     	else if (arg0.getSource()==removeCardButton){		//If the remove card button is clicked
     		String selectedRemoveCard = deckList.getSelectedValuesList().toString();    		
