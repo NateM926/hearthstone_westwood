@@ -234,10 +234,6 @@ public class Search {
 	// POST: returns a list of Cards in the order they were received
 	public static ArrayList<Card> getCardList(HttpResponse<JsonNode> response)
 	{
-		//*
-		//BUG: method does not account for the case when no cards are returned
-		//*
-		
 		ArrayList<Card> cardList = new ArrayList<Card>();
 		String rawJson = response.getBody().getObject().toString();
 		rawJson = rawJson.substring(rawJson.indexOf('{'));			// trims off leading '{'
