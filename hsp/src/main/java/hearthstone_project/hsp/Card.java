@@ -167,6 +167,21 @@ public class Card {
 		
 	}
 
+	// Test purposes only, in non-applicable string fields, pass "", in non-applicable int fields, pass -1
+	public Card(String Id, String name, String type, String text, String imgGold, String img, String cardSet, int cost, int attack, int health, int durability)
+	{
+		cardId = Id;
+		this.name = name;
+		this.type = type;
+		this.text = text;
+		this.imgGold = imgGold;
+		this.cardSet = cardSet;
+		this.cost = cost;
+		this.attack = attack;
+		this.health = health;
+		this.durability = durability;
+	}
+	
 	public static void main(String[] args)
 	{
 	}
