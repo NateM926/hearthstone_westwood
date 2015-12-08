@@ -117,17 +117,16 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     //FRAME LISTENERS
     public void actionPerformed(ActionEvent arg0) {
     	if (arg0.getSource()==searchButton){				//If the search button is clicked
-    		
-    		ArrayList<Card> mycardlist = new ArrayList<Card>();
+    		Search searcher = new Search();
+    		ArrayList<Card> searchResults = new ArrayList<Card>();
     		String searchText = searchBar.getText();
+    		searchResults = searcher.DoSearch(searchText);
     		cardInfo.setText(searchText);
-            //ArrayList Test								//temporary for testing
-            Card testCard = new Card("id", "name", "type", "text", "imgGold", "img", "cardSet", 0, 0, 0, 0);
-            for(int i = 0; i < 100; i++)
-            {
-            	mycardlist.add(testCard);
-            	nameList.addElement(testCard.name);
-            }
+    		for (Card c: searchResults)
+    		{
+    			String cardName = c.name;
+    			nameList.addElement(cardName);
+    		}
   
             
             //searchCardArrayList.add(testCard);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+import org.apache.commons.codec.binary.StringUtils;
+
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -30,6 +32,11 @@ public class Search {
 			+ ((cost != -1) ?  "cost=" + Integer.toString(cost)  + "&" : "")
 			+ ((durability != -1) ? "durability=" + Integer.toString(durability) + "&" : "")
 			+ ((health != -1) ? "health=" + Integer.toString(health) : "");
+		
+		if (searchParams.charAt(searchParams.length()-1) == '&')
+		{
+			searchParams = searchParams.substring(0, searchParams.length()-1);
+		}
 		
 		HttpResponse<JsonNode> response = Unirest.get(searchParams)
 			.header("X-Mashape-Key", "Hxzas1SwQimshDHBtoNCh9GvANOdp1I4eaejsnMXA6Zq0vAjDk")
