@@ -75,6 +75,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 
         addWindowListener(this);
         searchButton.addActionListener(this);
+        addCardButton.addActionListener(this);
+        removeCardButton.addActionListener(this);
         
         c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
         add(searchBar,c);
@@ -113,6 +115,21 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     }
     
     //FRAME LISTENERS
+    public void actionPerformed(ActionEvent arg0) {
+    	if (arg0.getSource()==searchButton){				//If the search button is clicked
+    		Search searcher = new Search();
+			searcher.DoSearch(searchBar.getText());
+    	}
+    	else if (arg0.getSource()==addCardButton){			//If the add card button is clicked
+    		String selectedAddCard = cardList.getSelectedValuesList().toString();    		
+    		cardInfo.setText(selectedAddCard);
+    	}
+    	else if (arg0.getSource()==removeCardButton){		//If the remove card button is clicked
+    		String selectedRemoveCard = deckList.getSelectedValuesList().toString();    		
+    		cardInfo.setText(selectedRemoveCard);
+    	}
+
+    }
     public void windowClosing(WindowEvent arg0) {
         dispose();
         System.exit(0);		
@@ -123,11 +140,5 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	public void windowDeiconified(WindowEvent arg0) {}
 	public void windowIconified(WindowEvent arg0) {}
 	public void windowOpened(WindowEvent arg0) {}
-	public void actionPerformed(ActionEvent arg0) {	
-		if(arg0.getSource() == searchButton) {
-			Search searcher = new Search();
-			searcher.DoSearch(searchBar.getText());
-		}
-	}
 	public void itemStateChanged(ItemEvent arg0) {}
 }
