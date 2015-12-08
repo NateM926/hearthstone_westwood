@@ -122,6 +122,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     		String searchText = searchBar.getText();
     		searchResults = searcher.DoSearch(searchText);
     		cardInfo.setText(searchText);
+    		nameList.clear();
+    		
     		for (Card c: searchResults)
     		{
     			String cardName = c.name;
