@@ -241,10 +241,10 @@ public class Search {
 		Card nextCard;
 		while (nextCardEndIndex != -1)
 		{
-			int length = rawJson.length();
-			nextCard = new Card(rawJson.substring(0, nextCardEndIndex));
+			nextCard = new Card(rawJson.substring(nextCardEndIndex));
 			cardList.add(nextCard);
 			rawJson = rawJson.substring(nextCardEndIndex);
+			nextCardEndIndex = getNextCardEnd(rawJson);
 		}
 		return cardList;
 	}
