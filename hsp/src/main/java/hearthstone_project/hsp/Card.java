@@ -185,4 +185,8 @@ public class Card {
 	public static void main(String[] args)
 	{
 	}
+	
+	public String toString(){
+		return this.name+", "+this.cost;
+	}
 }

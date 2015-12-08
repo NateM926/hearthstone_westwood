@@ -10,6 +10,7 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
@@ -39,12 +40,26 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     JButton searchButton = new JButton("Search");
     JTextField searchBar = new JTextField("Search");
     
-    //Card Lists:
-    String[] cards = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","vewac","cwewe",
+    //Card Lists:    
+    ArrayList<Card> searchCardArrayList = new ArrayList<Card>();
+    ArrayList<Card> deckArrayList = new ArrayList<Card>();
+    //ArrayList<String> deckArrayList = new ArrayList<String>();
+    //List deckListList = new ArrayList<Card>();
+    
+    /*
+    String[] deckArray = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","vewac","cwewe",
     		"asdf","vewac","cwewe","asdf","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas",
     		"vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
-    JList<String[]> cardList = new JList(cards);
-    JList<String[]> deckList = new JList(cards);
+    String[] searchCardArray = {"asdf","asdfa","adfas","vdfav","few","vewac","cwewe","asdf","vewac","cwewe",
+    		"asdf","vewac","cwewe","asdf","adfas","vdfav","few","vewac","cwewe","asdf","asdfa","adfas",
+    		"vdfav","few","vewac","cwewe","asdf","asdfa","adfas","vdfav","few","vewac","cwewe"};
+	*/
+	
+    //JList<String[]> cardList = new JList(deckArrayList.toArray());
+    JList<Card[]> cardList = new JList(populatingList(searchCardArrayList));
+    //JList<Card[]> deckList = new JList(deckArrayList.toArray());
+    JList<Card[]> deckList = new JList(deckArrayList.toArray());
+        
     JScrollPane cardListScroller = new JScrollPane(cardList);
     JScrollPane deckListScroller = new JScrollPane(deckList);
 	JButton addCardButton = new JButton("Add Card");
@@ -78,6 +93,11 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         addCardButton.addActionListener(this);
         removeCardButton.addActionListener(this);
         
+        Card testCard = new Card("id", "name", "type", "text", "imgGold", "img", "cardSet", 0, 0, 0, 0);
+        //deckArrayList.add(testCard.name+", "+testCard.cost);
+        //deckListList.add(testCard);
+        //deckList.setCellRenderer(new DeckListRenderer());		//http://www.java2s.com/Code/Java/Swing-JFC/UseJListcomponenttodisplaycustomobjectswithListCellRenderer.htm
+        
         c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
         add(searchBar,c);
         
@@ -95,7 +115,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 
         c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=0;
         add(cardInfo,c);
-        cardInfo.setText("HEARTHSTONE TEST:\n\n\nasdfasdfas\n\n\ndfa\n\n\n\ns");
+        cardInfo.setText("HEARTHSTONE TEST:\n\n\nasdfasdfas\n\n\ndfa\n\n\n\ns");		//temporary for testing
                 
         c.gridx=0;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
         add(addCardButton,c);
@@ -103,10 +123,10 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         c.gridx=4;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
         add(removeCardButton,c);
 
-        
+        //deckArrayList.add("asdf,0");
 	}
  
-    public static void testingResponse() throws UnirestException{
+    public static void testingResponse() throws UnirestException{						//temporary for testing
     	HttpResponse<JsonNode> response = Unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards")
     	    	.header("X-Mashape-Key", "0Ft11iQGTcmshEqprMjGICRQ0q1bp1jLSLojsnF6HWVrpPhAzO")
     	    	.asJson();    	
@@ -114,14 +134,33 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         System.out.println(json.toString());
     }
     
+    public DefaultListModel<String> populatingList(ArrayList<Card> list){
+    	DefaultListModel<String> newList = new DefaultListModel<String>();
+    	for(Card c:list){
+    	    newList.addElement(c.name+", "+c.cost);
+    	}
+    	System.out.println(newList);
+    	return newList;
+    }
+    
     //FRAME LISTENERS
     public void actionPerformed(ActionEvent arg0) {
     	if (arg0.getSource()==searchButton){				//If the search button is clicked
     		String searchText = searchBar.getText();
     		cardInfo.setText(searchText);
+    		
+            //ArrayList Test								//temporary for testing
+            Card testCard = new Card("id", "name", "type", "text", "imgGold", "img", "cardSet", 0, 0, 0, 0);
+            //deckArrayList.add(testCard.name+", "+testCard.cost);
+            deckArrayList.add(testCard);
+            searchCardArrayList.add(testCard);
+      
+            
+            System.out.println(deckArrayList.toString());          
+            
     	}
     	else if (arg0.getSource()==addCardButton){			//If the add card button is clicked
-    		String selectedAddCard = cardList.getSelectedValuesList().toString();    		
+    		String selectedAddCard = cardList.getSelectedValuesList().toString(); 
     		cardInfo.setText(selectedAddCard);
     	}
     	else if (arg0.getSource()==removeCardButton){		//If the remove card button is clicked
