@@ -271,7 +271,7 @@ public class Search {
 			{
 				bracesOpen++;
 			}
-			if (rawJson.charAt(currentIndex) == '{')
+			if (rawJson.charAt(currentIndex) == '}')
 			{
 				bracesOpen--;
 			}
