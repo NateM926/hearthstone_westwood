@@ -10,6 +10,7 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -20,8 +21,7 @@ import javax.swing.event.ListSelectionListener;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 /**
- * This is the GUI Application. Run this to use the program.
- *
+ * GUI Application
  */
 
 public class App extends Frame implements WindowListener,ActionListener,ItemListener
@@ -37,6 +37,9 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     JTextField searchBar = new JTextField("Search");
     
     //Card Lists:
+    ArrayList<Card> searchCardArrayList = new ArrayList<Card>();
+    ArrayList<Card> deckCardArrayList = new ArrayList<Card>();
+    
     DefaultListModel<String> nameList = new DefaultListModel<String>();
     DefaultListModel<String> decknameList = new DefaultListModel<String>();
     JList<String[]> cardList = new JList(nameList);
@@ -48,8 +51,9 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	JButton removeCardButton = new JButton("Remove Card");
 
     //Pictures:
-    String IMG_PATH = "src/imp_gang_pic.png";
-	BufferedImage img = ImageIO.read(new File(IMG_PATH));
+    String IMG_PATH = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_023.png";		//"src/imp_gang_pic.png"
+    URL url = new URL(IMG_PATH);
+    BufferedImage img = ImageIO.read(url);
 	JLabel picLabel = new JLabel(new ImageIcon(img));
 
 	//Card Information:
@@ -64,34 +68,48 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         app.setSize(750,800);
         app.setVisible(true);
     }
+    
 
 	public App(String title) throws IOException {			
         setLayout(gridbag);
         c.fill = GridBagConstraints.BOTH;
         c.insets=padding;
 
-        //LISTENERS
+        //Adding listeners
         addWindowListener(this);
         searchButton.addActionListener(this);
         addCardButton.addActionListener(this);
         removeCardButton.addActionListener(this);
         deckList.addListSelectionListener(new ListSelectionListener() {		//Used for deckList listener.
-            public void valueChanged(ListSelectionEvent arg0) {
+            public void valueChanged(ListSelectionEvent arg0) {												//CURRENT BUG: When removing a card from decklist it crashes.
                 if (!arg0.getValueIsAdjusting()) {
-                  cardInfo.setText(deckList.getSelectedValue()+"");
+                  cardInfo.setText(deckCardArrayList.get(deckList.getSelectedIndex()).toString());			//What happens when a new deck card is highlighted.
                 }
             }
         });
+        
         cardList.addListSelectionListener(new ListSelectionListener() {		//Used for cardList listener.
             public void valueChanged(ListSelectionEvent arg0) {
                 if (!arg0.getValueIsAdjusting()) {
-                  cardInfo.setText(cardList.getSelectedValue()+"");
+                  cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
+                  
+                  //IMG_PATH = searchCardArrayList.get(cardList.getSelectedIndex()).img;	//WORKING WITH IMAGES.
+                  /*
+                  try {
+                      IMG_PATH = searchCardArrayList.get(cardList.getSelectedIndex()).img;
+                	  url = new URL(IMG_PATH);
+                	  img = ImageIO.read(url);
+                	  //System.out.println(IMG_PATH);
+                	  //cardPic.updateUI();
+                  } 
+                  catch (IOException e) {
+                  }
+                  */
                 }
             }
         });
 
-        
-        
+        //adding GUI elements to grid.
         c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
         add(searchBar,c);
         
@@ -132,25 +150,29 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     		{
     			String cardName = c.name;
     			nameList.addElement(cardName);
+    			searchCardArrayList.add(c);
     		}     
     		
     	}
     	else if (arg0.getSource()==addCardButton){			//If the add card button is clicked
     		String selectedAddCard = cardList.getSelectedValuesList().toString(); 
-    		cardInfo.setText(selectedAddCard);
     		decknameList.addElement(selectedAddCard);
+    		deckCardArrayList.add(searchCardArrayList.get(cardList.getSelectedIndex()));
+    		
     	}
     	
     	else if (arg0.getSource()==removeCardButton){		//If the remove card button is clicked
-    		String selectedRemoveCard = deckList.getSelectedValuesList().toString();    		
-    		cardInfo.setText(selectedRemoveCard);
+    		decknameList.removeElementAt(deckList.getSelectedIndex());
     	}
-
     }
+    
+    
     public void windowClosing(WindowEvent arg0) {
         dispose();
         System.exit(0);		
 	}
+    
+    //UNUSED LISTENERS
     public void windowClosed(WindowEvent arg0) {}
 	public void windowActivated(WindowEvent arg0) {}
 	public void windowDeactivated(WindowEvent arg0) {}

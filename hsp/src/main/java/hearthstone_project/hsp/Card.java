@@ -159,6 +159,6 @@ public class Card {
 	}
 	
 	public String toString(){
-		return ""+name+type+text+cardSet+cost+attack+health;
+		return "Name: "+name+"\nType: "+type+"\nText: "+text+"\nCard Set: "+cardSet+"\nCost: "+cost+"\nAttack: "+attack+"\nHealth: "+health;
 	}
 }

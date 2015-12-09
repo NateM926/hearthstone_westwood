@@ -344,7 +344,7 @@ public class Search {
 			//handle exception
 		}
 		ArrayList<Card> cardList = getCardList(response);
-		System.out.println(cardList.toString());
+		//System.out.println(cardList.toString());
 		return cardList;
 	}
 }
