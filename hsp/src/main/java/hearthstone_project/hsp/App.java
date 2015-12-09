@@ -11,16 +11,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-import org.json.JSONObject;
-
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 /**
@@ -41,8 +37,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     JTextField searchBar = new JTextField("Search");
     
     //Card Lists:
-    DefaultListModel nameList = new DefaultListModel();
-    DefaultListModel decknameList = new DefaultListModel();
+    DefaultListModel<String> nameList = new DefaultListModel<String>();
+    DefaultListModel<String> decknameList = new DefaultListModel<String>();
     JList<String[]> cardList = new JList(nameList);
     JList<String[]> deckList = new JList(decknameList);
 
@@ -74,11 +70,28 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         c.fill = GridBagConstraints.BOTH;
         c.insets=padding;
 
+        //LISTENERS
         addWindowListener(this);
         searchButton.addActionListener(this);
         addCardButton.addActionListener(this);
         removeCardButton.addActionListener(this);
-                
+        deckList.addListSelectionListener(new ListSelectionListener() {		//Used for deckList listener.
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                  cardInfo.setText(deckList.getSelectedValue()+"");
+                }
+            }
+        });
+        cardList.addListSelectionListener(new ListSelectionListener() {		//Used for cardList listener.
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                  cardInfo.setText(cardList.getSelectedValue()+"");
+                }
+            }
+        });
+
+        
+        
         c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
         add(searchBar,c);
         
