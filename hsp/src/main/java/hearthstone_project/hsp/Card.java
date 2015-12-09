@@ -27,11 +27,7 @@ public class Card {
 		if (currentIndex != -1)
 		{
 			startIndex = currentIndex + 10;
-			endIndex = startIndex + 1;
-			while (rawCardData.charAt(endIndex) != '"')
-			{
-				endIndex++;
-			}
+			endIndex = rawCardData.indexOf("\"", startIndex);
 			cardId = rawCardData.substring(startIndex, endIndex);
 		}
 		
@@ -40,11 +36,7 @@ public class Card {
 		if (currentIndex != -1)							
 		{
 			startIndex = currentIndex + 8;
-			endIndex = startIndex + 1;
-			while (rawCardData.charAt(endIndex) != '"')
-			{
-				endIndex++;
-			}
+			endIndex = rawCardData.indexOf("\"", startIndex);
 			name = rawCardData.substring(startIndex, endIndex);
 		}
 		
@@ -53,11 +45,7 @@ public class Card {
 		if (currentIndex != -1)
 		{
 			startIndex = currentIndex + 8;
-			endIndex = startIndex + 1;
-			while (rawCardData.charAt(endIndex) != '"')
-			{
-				endIndex++;
-			}
+			endIndex = rawCardData.indexOf("\"", startIndex);
 			type = rawCardData.substring(startIndex, endIndex);
 		}
 		
@@ -66,11 +54,7 @@ public class Card {
 		if (currentIndex != -1)
 		{
 			startIndex = currentIndex + 8;
-			endIndex = startIndex + 1;
-			while (rawCardData.charAt(endIndex) != '"')
-			{
-				endIndex++;
-			}
+			endIndex = rawCardData.indexOf("\"", startIndex);
 			text = rawCardData.substring(startIndex, endIndex);
 		}
 		
@@ -79,11 +63,7 @@ public class Card {
 		if (currentIndex != -1)
 		{
 			startIndex = currentIndex + 11;
-			endIndex = startIndex + 1;
-			while (rawCardData.charAt(endIndex) != '"')
-			{
-				endIndex++;
-			}
+			endIndex = rawCardData.indexOf("\"", startIndex);
 			imgGold = rawCardData.substring(startIndex, endIndex);
 		}
 		
@@ -92,11 +72,7 @@ public class Card {
 		if (currentIndex != -1)
 		{
 			startIndex = currentIndex + 7;
-			endIndex = startIndex + 1;
-			while (rawCardData.charAt(endIndex) != '"')
-			{
-				endIndex++;
-			}
+			endIndex = rawCardData.indexOf("\"", startIndex);
 			img = rawCardData.substring(startIndex, endIndex);
 		}
 		
@@ -105,11 +81,7 @@ public class Card {
 		if (currentIndex != -1)
 		{
 			startIndex = currentIndex + 11;
-			endIndex = startIndex + 1;
-			while (rawCardData.charAt(endIndex) != '"')
-			{
-				endIndex++;
-			}
+			endIndex = rawCardData.indexOf("\"", startIndex);
 			cardSet = rawCardData.substring(startIndex, endIndex);
 		}
 		
@@ -117,7 +89,7 @@ public class Card {
 		currentIndex = rawCardData.indexOf("\"cost\"");
 		if (currentIndex != -1)
 		{
-			startIndex = currentIndex + 8;
+			startIndex = currentIndex + 7;
 			endIndex = startIndex;
 			while (Character.isDigit(rawCardData.charAt(endIndex)))
 			{
@@ -130,7 +102,7 @@ public class Card {
 		currentIndex = rawCardData.indexOf("\"attack\"");
 		if (currentIndex != -1)
 		{
-			startIndex = currentIndex + 10;
+			startIndex = currentIndex + 9;
 			endIndex = startIndex + 1;
 			while (Character.isDigit(rawCardData.charAt(endIndex)))
 			{
@@ -141,9 +113,9 @@ public class Card {
 		
 		// finding health of card
 		currentIndex = rawCardData.indexOf("\"health\"");
-		if (currentIndex != 0)
+		if (currentIndex != -1)
 		{
-			startIndex = currentIndex + 10;
+			startIndex = currentIndex + 9;
 			endIndex = startIndex + 1;
 			while (Character.isDigit(rawCardData.charAt(endIndex)))
 			{
@@ -154,10 +126,10 @@ public class Card {
 		
 		// finding durability of a weapon
 		currentIndex = rawCardData.indexOf("\"durability\"");
-		if (currentIndex != 0)
+		if (currentIndex != -1)
 		{
-			startIndex = currentIndex + 14;
-			endIndex = startIndex + 1;
+			startIndex = currentIndex + 13;
+			endIndex = startIndex;
 			while (Character.isDigit(rawCardData.charAt(endIndex)))
 			{
 				endIndex++;
@@ -187,6 +159,6 @@ public class Card {
 	}
 	
 	public String toString(){
-		return this.name+", "+this.cost;
+		return ""+name+type+text+cardSet+cost+attack+health;
 	}
 }
