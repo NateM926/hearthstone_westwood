@@ -92,17 +92,16 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
             public void valueChanged(ListSelectionEvent arg0) {
                 if (!arg0.getValueIsAdjusting()) {
                   cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
-                
+                  
+                  //PIC UPDATING
                   try {	//BUG : Barely works - only if you try changing the card enough times, definitely a better way to do it. 
                 	  	//The pics are not clearing correctly. Once this part is fixed I'll add it to the deck list as well.
                 	  url = new URL(searchCardArrayList.get(cardList.getSelectedIndex()).img);
                 	  img = ImageIO.read(url);
                 	  picLabel = new JLabel(new ImageIcon(img));
                 	  cardPic = new JScrollPane(picLabel);
-                      c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;
-                      add(cardPic,c);
-
-                	  //System.out.println(url);
+                      c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;	//Pretty hacked :/ I tried putting less 
+                      add(cardPic,c);																//in and it wouldn't work. Still barely works.
                   } 
                   catch (IOException e) {
                   }
@@ -128,6 +127,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         add(cardPic,c);
 
         c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=0;
+        cardInfo.setEditable(false);
         add(cardInfo,c);
                 
         c.gridx=0;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
