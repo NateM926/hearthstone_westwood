@@ -92,21 +92,23 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
             public void valueChanged(ListSelectionEvent arg0) {
                 if (!arg0.getValueIsAdjusting()) {
                   cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
-                  
-                  //IMG_PATH = searchCardArrayList.get(cardList.getSelectedIndex()).img;	//WORKING WITH IMAGES.
-                  /*
-                  try {
-                      IMG_PATH = searchCardArrayList.get(cardList.getSelectedIndex()).img;
-                	  url = new URL(IMG_PATH);
+                
+                  try {	//BUG : Barely works - only if you try changing the card enough times, definitely a better way to do it. 
+                	  	//The pics are not clearing correctly. Once this part is fixed I'll add it to the deck list as well.
+                	  url = new URL(searchCardArrayList.get(cardList.getSelectedIndex()).img);
                 	  img = ImageIO.read(url);
-                	  //System.out.println(IMG_PATH);
-                	  //cardPic.updateUI();
+                	  picLabel = new JLabel(new ImageIcon(img));
+                	  cardPic = new JScrollPane(picLabel);
+                      c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;
+                      add(cardPic,c);
+
+                	  //System.out.println(url);
                   } 
                   catch (IOException e) {
                   }
-                  */
                 }
             }
+            
         });
 
         //adding GUI elements to grid.
