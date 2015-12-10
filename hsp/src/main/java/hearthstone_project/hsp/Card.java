@@ -62,6 +62,15 @@ public class Card {
 			text = rawCardData.substring(startIndex, endIndex);
 		}
 		
+		// getting flavor text
+		currentIndex = rawCardData.indexOf("\"flavor\"");	
+		if (currentIndex != -1)
+		{
+			startIndex = currentIndex + 10;
+			endIndex = rawCardData.indexOf("\"", startIndex);
+			flavor = rawCardData.substring(startIndex, endIndex);
+		}
+		
 		// finding gold image url
 		currentIndex = rawCardData.indexOf("\"imgGold\"");
 		if (currentIndex != -1)
@@ -95,7 +104,7 @@ public class Card {
 		{
 			startIndex = currentIndex + 15;
 			endIndex = rawCardData.indexOf("\"", startIndex);
-			cardSet = rawCardData.substring(startIndex, endIndex);
+			playerClass = rawCardData.substring(startIndex, endIndex);
 		}
 		
 		// finding race of card
@@ -104,7 +113,7 @@ public class Card {
 		{
 			startIndex = currentIndex + 8;
 			endIndex = rawCardData.indexOf("\"", startIndex);
-			cardSet = rawCardData.substring(startIndex, endIndex);
+			race = rawCardData.substring(startIndex, endIndex);
 		}
 		
 		// finding mana cost of card

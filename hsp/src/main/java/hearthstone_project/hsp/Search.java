@@ -247,7 +247,7 @@ public class Search {
 		Card nextCard;
 		while (nextCardEndIndex != -1)
 		{
-			nextCard = new Card(rawJson.substring(nextCardEndIndex));
+			nextCard = new Card(rawJson.substring(0, nextCardEndIndex));
 			if (nextCard.isPlayable())
 			{	cardList.add(nextCard);}
 			rawJson = rawJson.substring(nextCardEndIndex);
@@ -260,29 +260,22 @@ public class Search {
 	// POST: returns index after the end of the first card object, or -1 if there are no cards.
 	public static int getNextCardEnd(String rawJson)
 	{
-		int bracesOpen = 1;
+		int bracesOpen = 0;
 		int currentIndex = rawJson.indexOf('{');
 		if (currentIndex == -1)
 		{
 			return -1;
 		}
-		currentIndex++;
-		while (bracesOpen > 0)
+		do 
 		{
 			if (currentIndex >= rawJson.length())
-			{
-				return -1;
-			}
+			{	return -1;}
 			if (rawJson.charAt(currentIndex) == '{')
-			{
-				bracesOpen++;
-			}
+			{	bracesOpen++;}
 			if (rawJson.charAt(currentIndex) == '}')
-			{
-				bracesOpen--;
-			}
+			{	bracesOpen--;}
 			currentIndex++;
-		}
+		} while (bracesOpen > 0);
 		return currentIndex + 1;
 	}
 	
