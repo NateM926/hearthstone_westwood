@@ -8,7 +8,6 @@ import java.awt.event.ItemListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -171,7 +170,6 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     		ArrayList<Card> searchResults = new ArrayList<Card>();
     		String searchText = searchBar.getText();
     		searchResults = searcher.DoSearch(searchText);
-    		cardInfo.setText(searchText);
     		boolean gold_img_display = searcher.gold_version;	//if user typed -g in search.
     		
     		//Trying to get second search to work:
