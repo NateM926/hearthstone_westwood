@@ -24,7 +24,7 @@ SEARCH LANGUAGE
 		-pc <player class>
 			search based on class
 		
-		-d <drafting deck>
+		-draft <drafting deck>
 			draft an arena deck for a certain class.
 		
 		Classes:
@@ -38,8 +38,8 @@ SEARCH LANGUAGE
 			ro = rogue
 			dr = druid
 		
-		ex: -d ma
-			-d hu	
+		ex: -draft ma
+			-draft hu	
 			-pc ro
 		
 			

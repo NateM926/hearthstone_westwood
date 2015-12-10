@@ -1,0 +1,701 @@
+Fire Elemental
+96
+Hex
+86
+North Sea Kraken
+86
+Piloted Shredder
+80
+Dark Iron Dwarf
+78
+Fireguard Destroyer
+76
+Flametongue Totem
+76
+Haunted Creeper
+76
+Silver Hand Knight
+76
+Stormwind Champion
+76
+Zombie Chow
+76
+Stormforged Axe
+74
+Mukla's Champion
+72
+Rockbiter Weapon
+72
+Argent Horserider
+70
+Flame Juggler
+70
+Harvest Golem
+70
+Lightning Bolt
+70
+Mechanical Yeti
+70
+Shattered Sun Cleric
+70
+Spider Tank
+70
+Tuskarr Totemic
+70
+Boulderfist Ogre
+68
+Chillwind Yeti
+68
+Frost Elemental
+68
+Mad Bomber
+68
+Pit Fighter
+68
+Scarlet Crusader
+68
+Sen'jin Shieldmasta
+68
+Totem Golem
+68
+Tunnel Trogg
+68
+Crackle
+66
+Earthen Ring Farseer
+66
+Evil Heckler
+66
+Loot Hoarder
+66
+Ogre Brute
+66
+Spellbreaker
+66
+Stranglethorn Tiger
+66
+Abusive Sergeant
+64
+Drakonid Crusher
+64
+Forked Lightning
+64
+Frostwolf Warlord
+64
+Gilblin Stalker
+64
+Kvaldir Raider
+64
+Clockwork Knight
+62
+Cult Master
+62
+Dire Wolf Alpha
+62
+Spectral Knight
+62
+Tomb Spider
+62
+Acolyte of Pain
+60
+Amani Berserker
+60
+Ancestral Knowledge
+60
+Argent Squire
+60
+Boneguard Lieutenant
+60
+Darkscale Healer
+60
+Fen Creeper
+60
+Force-Tank MAX
+60
+Gnomish Inventor
+60
+Hungry Dragon
+60
+Razorfen Hunter
+60
+Silver Hand Regent
+60
+Whirling Zap-o-matic
+60
+Worgen Infiltrator
+60
+Acidic Swamp Ooze
+58
+Annoy-o-Tron
+58
+Bloodsail Raider
+58
+Captured Jormungar
+58
+Huge Toad
+58
+Jeweled Scarab
+58
+Silent Knight
+58
+Unbound Elemental
+58
+Burly Rockjaw Trogg
+56
+Faerie Dragon
+56
+Mechwarper
+56
+Stonesplinter Trogg
+56
+Stormpike Commando
+56
+Stormwind Knight
+56
+Anubisath Sentinel
+54
+Elven Archer
+54
+Lost Tallstrider
+54
+Maiden of the Lake
+54
+Raging Worgen
+54
+Spiteful Smith
+54
+Venture Co. Mercenary
+54
+Archmage
+52
+Bloodfen Raptor
+52
+Earth Shock
+52
+Jungle Panther
+52
+Micro Machine
+52
+Novice Engineer
+52
+Puddlestomper
+52
+River Crocolisk
+52
+Rumbling Elemental
+52
+Ship's Cannon
+52
+Bluegill Warrior
+50
+Clockwork Gnome
+50
+Dragonhawk Rider
+50
+Dragonkin Sorcerer
+50
+Dragonling Mechanic
+50
+Flesheating Ghoul
+50
+Frigid Snobold
+50
+Lance Carrier
+50
+Lord of the Arena
+50
+Refreshment Vendor
+50
+Silvermoon Guardian
+50
+Volcanic Drake
+50
+War Golem
+50
+Wolfrider
+50
+Youthful Brewmaster
+50
+BELOW AVERAGE
+Ironfur Grizzly
+48
+Murloc Tidehunter
+48
+Ogre Magi
+48
+Ancient Brewmaster
+46
+Gadgetzan Jouster
+46
+Reckless Rocketeer
+46
+Unstable Ghoul
+46
+Antique Healbot
+44
+Blackwing Corruptor
+44
+Blackwing Technician
+44
+Gurubashi Berserker
+44
+Ice Rager
+44
+Ironbeak Owl
+44
+Tinkertown Technician
+44
+Ironforge Rifleman
+42
+Oasis Snapjaw
+42
+Windspeaker
+42
+Bloodlust
+40
+Frost Shock
+40
+Gorillabot A-3
+40
+Leper Gnome
+40
+Lowly Squire
+40
+Salty Dog
+40
+Voodoo Doctor
+40
+Booty Bay Bodyguard
+38
+Mogu'shan Warden
+38
+Nerub'ar Weblord
+38
+Southsea Deckhand
+38
+Stonetusk Boar
+38
+Ancestral Healing
+36
+Nightblade
+36
+Raid Leader
+36
+Tournament Attendee
+36
+Cogmaster
+34
+Gnomeregan Infantry
+34
+Kobold Geomancer
+34
+Murloc Raider
+34
+Dancing Swords
+32
+Frostwolf Grunt
+32
+Tournament Medic
+32
+Priestess of Elune
+30
+Core Hound
+28
+Dread Corsair
+26
+Explosive Sheep
+26
+Mad Scientist
+26
+Undertaker
+26
+Windfury
+26
+Windfury Harpy
+26
+Goldshire Footman
+24
+Tauren Warrior
+24
+Shieldbearer
+22
+Murloc Tinyfin
+18
+Magma Rager
+16
+Silverback Patriarch
+16
+Wisp
+16
+Dalaran Mage
+14
+Thrallmar Farseer
+14
+Dust Devil
+12
+Flying Machine
+12
+Reincarnate
+12
+Young Dragonhawk
+10
+Grimscale Oracle
+8
+Totemic Might
+8
+Stoneskin Gargoyle
+4
+Lightning Storm
+90
+Powermace
+88
+Sunwalker
+84
+Argent Commander
+80
+Azure Drake
+80
+Bomb Lobber
+80
+Knife Juggler
+80
+Sludge Belcher
+80
+Stampeding Kodo
+80
+Feral Spirit
+76
+Defender of Argus
+72
+Thunder Bluff Valiant
+70
+Violet Teacher
+70
+Imp Master
+68
+Madder Bomber
+68
+Mind Control Tech
+66
+Twilight Drake
+66
+Mana Tide Totem
+64
+Saboteur
+64
+Emperor Cobra
+62
+Master Jouster
+62
+Ancient Shade
+60
+Draenei Totemcarver
+60
+Lava Burst
+60
+Lava Shock
+60
+Light's Champion
+56
+Questing Adventurer
+56
+Sunfury Protector
+56
+Wild Pyromancer
+56
+Gnomish Experimenter
+54
+Injured Blademaster
+54
+Ancestral Spirit
+52
+Arcane Golem
+52
+Coliseum Manager
+52
+Crazed Alchemist
+50
+Arcane Nullifier X-21
+48
+Armored Warhorse
+46
+Demolisher
+46
+Nerubian Egg
+46
+Young Priestess
+46
+Gadgetzan Auctioneer
+44
+Pint-Sized Summoner
+44
+Ravenholdt Assassin
+44
+Wailing Soul
+44
+Deathlord
+42
+Kezan Mystic
+42
+Fencing Coach
+40
+Goblin Sapper
+40
+Illuminator
+40
+Lil' Exorcist
+40
+Everyfin is Awesome
+38
+Injured Kvaldir
+36
+Dunemaul Shaman
+34
+Jeeves
+32
+Abomination
+30
+Bloodsail Corsair
+30
+Mana Wraith
+30
+Mogor's Champion
+28
+Vitality Totem
+26
+Lightwarden
+24
+Master Swordsmith
+24
+Ancient Mage
+22
+Argent Watchman
+20
+Dragon Egg
+20
+Healing Wave
+20
+Target Dummy
+20
+Grim Patron
+18
+Secretkeeper
+18
+Summoning Stone
+18
+Murloc Tidecaller
+16
+Coldlight Oracle
+12
+Mana Addict
+12
+Coldlight Seer
+10
+Angry Chicken
+8
+Ancient Watcher
+2
+Alarm-o-Bot
+1
+Earth Elemental
+100
+Sea Giant
+86
+Piloted Sky Golem
+78
+Elemental Destruction
+76
+Grand Crusader
+74
+Kodorider
+72
+Fel Reaver
+70
+Big Game Hunter
+66
+Blood Knight
+66
+Shade of Naxxramas
+66
+Doomhammer
+62
+Frost Giant
+60
+Echoing Ooze
+58
+Faceless Manipulator
+58
+Garrison Commander
+58
+Recombobulator
+58
+Crowd Favorite
+54
+Djinni of Zephyrs
+54
+Molten Giant
+52
+Charged Hammer
+50
+Master of Ceremonies
+50
+BELOW AVERAGE
+Recruiter
+46
+Far Sight
+42
+Enhance-o Mechano
+40
+Southsea Captain
+40
+Twilight Guardian
+40
+Murloc Warleader
+38
+Mini-Mage
+36
+Naga Sea Witch
+36
+Mountain Giant
+34
+Hobgoblin
+32
+Sideshow Spelleater
+32
+Doomsayer
+30
+Clockwork Giant
+28
+Hungry Crab
+28
+Junkbot
+8
+Siltfin Spiritwalker
+8
+Ancestor's Call
+0
+Dr. Boom
+130
+Deathwing
+100
+Neptulon
+100
+Onyxia
+100
+Ragnaros the Firelord
+92
+Al'Akir the Windlord
+90
+Kel'Thuzad
+90
+Nexus-Champion Saraad
+88
+Sylvanas Windrunner
+88
+Ysera
+84
+Nefarian
+82
+Alexstrasza
+80
+Cairne Bloodhoof
+80
+Hogger
+78
+Foe Reaper 4000
+76
+The Mistcaller
+76
+Toshley
+76
+Troggzor the Earthinator
+74
+Eydis Darkbane
+72
+Feugen
+72
+Sneed's Old Shredder
+72
+Chromaggus
+70
+Fjola Lightbane
+70
+Icehowl
+70
+The Black Knight
+70
+Baron Geddon
+68
+Illidan Stormrage
+68
+Loatheb
+66
+Maexxna
+66
+Gormok the Impaler
+64
+King Mukla
+64
+Mogor the Ogre
+64
+Gruul
+62
+Mekgineer Thermaplugg
+62
+Emperor Thaurissan
+60
+Harrison Jones
+58
+Tinkmaster Overspark
+58
+Chillmaw
+54
+Hemet Nesingwary
+54
+Malygos
+54
+Bloodmage Thalnos
+52
+Captain Greenskin
+52
+Reno Jackson
+52
+The Beast
+50
+Brann Bronzebeard
+49
+Justicar Trueheart
+48
+Leeroy Jenkins
+48
+Skycap'n Kragg
+46
+Blingtron 3000
+44
+Bolf Ramshield
+44
+Mimiron's Head
+44
+Gazlowe
+42
+Sir Finley Mrrgglton
+42
+The Skeleton Knight
+42
+Majordomo Executus
+40
+Stalagg
+40
+BAD
+Nozdormu
+38
+Baron Rivendare
+30
+Millhouse Manastorm
+30
+Nat Pagle
+22
+Rend Blackhand
+20
+Lorewalker Cho
+12

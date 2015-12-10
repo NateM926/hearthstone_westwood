@@ -197,6 +197,26 @@ public class Card {
 	}
 	
 	public String toString(){
-		return "Name: "+name+"\nType: "+type+"\nClass: "+playerClass+"\nCard Set: "+cardSet+"\n\nText: "+text+"\n\nCost: "+cost+"\nAttack: "+attack+"\nHealth: "+health;
+		String s = "Name: "+name+"\nType: "+type;
+		
+		if (!(playerClass.equals(""))){
+			s=s+"\nClass: "+playerClass;
+		}
+		
+		s=s+"\nCard Set: "+cardSet+"\n\nText: "+text;
+		
+		if (cost!=-1){
+			s=s+"\n\nCost: "+cost;
+		}
+		if (attack!=-1){
+			s=s+"\nAttack: "+attack;
+		}
+		if (health!=-1){
+			s=s+"\nHealth: "+health;
+		}
+		if (durability!=-1){
+			s=s+"\nDurability: "+durability;
+		}
+		return s;
 	}
 }
