@@ -51,7 +51,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	JButton removeCardButton = new JButton("Remove Card");
 
     //Pictures:
-    String IMG_PATH = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_023.png";
+    String IMG_PATH = "http://wow.zamimg.com/images/hearthstone/cardbacks/original/Card_Back_TeSPA.png?8314"; //Empty Card
     URL url = new URL(IMG_PATH);
     BufferedImage img = ImageIO.read(url);
 	JLabel picLabel = new JLabel(new ImageIcon(img));
@@ -65,7 +65,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     {
     	App app = new App("Hearthstone Deck Builder");
         app.pack();
-        app.setSize(750,800);
+        app.setSize(1200,800);
         app.setVisible(true);
     }
     
@@ -85,6 +85,17 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
             public void valueChanged(ListSelectionEvent arg0) {												//CURRENT BUG: When removing a card from decklist it crashes.
                 if (!arg0.getValueIsAdjusting()) {
                   cardInfo.setText(deckCardArrayList.get(deckList.getSelectedIndex()).toString());			//What happens when a new deck card is highlighted.
+                    
+                  //PIC UPDATING:
+                  try {
+                	  url = new URL(deckCardArrayList.get(deckList.getSelectedIndex()).img);
+                	  img.flush();
+                	  img = ImageIO.read(url);
+                	  picLabel.setIcon(new ImageIcon(img));
+                  } 
+                  catch (IOException e) {
+                	  System.out.println("can't get the pic url.");
+                  }
                 }
             }
         });
@@ -94,17 +105,15 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
                 if (!arg0.getValueIsAdjusting()) {
                   cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
                   
-                  //PIC UPDATING
+                  //PIC UPDATING:
                   try {
                 	  url = new URL(searchCardArrayList.get(cardList.getSelectedIndex()).img);
                 	  img.flush();
                 	  img = ImageIO.read(url);
                 	  picLabel.setIcon(new ImageIcon(img));
-                      c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;	//Pretty hacked :/ I tried putting less 
-                      add(cardPic,c);																//in and it wouldn't work. Still barely works.
                   } 
                   catch (IOException e) {
-                	  System.out.println("MISTAKE");
+                	  System.out.println("can't get the pic url.");
                   }
                 }
             }
@@ -112,23 +121,24 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         });
 
         //adding GUI elements to grid.
-        c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=2;c.weighty=0;
+        c.gridx=0;c.gridy=0;c.gridwidth=4;c.gridheight=1;c.weightx=3;c.weighty=0;
         add(searchBar,c);
         
-        c.gridx=4;c.gridy=0;c.gridwidth=1;c.gridheight=1;c.weightx=0.5;c.weighty=0;
+        c.gridx=4;c.gridy=0;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
         add(searchButton,c);
         
-        c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=6;c.weightx=1;c.weighty=3;
+        c.gridx=0;c.gridy=1;c.gridwidth=1;c.gridheight=6;c.weightx=0;c.weighty=3;
         add(cardListScroller,c);
 
-        c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=6;c.weightx=0.5;c.weighty=3;
+        c.gridx=4;c.gridy=1;c.gridwidth=1;c.gridheight=6;c.weightx=0;c.weighty=3;
         add(deckListScroller,c);
 
-        c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;
+        c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=5;c.weighty=3;
         add(cardPic,c);
 
-        c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=0;
+        c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=1;
         cardInfo.setEditable(false);
+        cardInfo.setText("Welcome to Nate, Crockett and Max's Hearthstone deckbuilder!\nMaybe put some tutorial type of thing here!");
         add(cardInfo,c);
                 
         c.gridx=0;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;

@@ -197,6 +197,6 @@ public class Card {
 	}
 	
 	public String toString(){
-		return "Name: "+name+"\nType: "+type+"\nClass: "+playerClass+"\nCard Set: "+cardSet+"\n\nText: "+text+"\nFlavor: "+flavor+"\n\nCost: "+cost+"\nAttack: "+attack+"\nHealth: "+health;
+		return "Name: "+name+"\nType: "+type+"\nClass: "+playerClass+"\nCard Set: "+cardSet+"\n\nText: "+text+"\n\nCost: "+cost+"\nAttack: "+attack+"\nHealth: "+health;
 	}
 }
