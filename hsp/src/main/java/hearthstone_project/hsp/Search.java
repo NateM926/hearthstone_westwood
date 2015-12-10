@@ -236,27 +236,26 @@ public class Search {
 		return response;
 	}
 	
-	// UNTESTED
 	// PRE: takes in HttpResponse from a search
 	// POST: returns a list of Cards in the order they were received
 	public static ArrayList<Card> getCardList(HttpResponse<JsonNode> response)
 	{
 		ArrayList<Card> cardList = new ArrayList<Card>();
 		String rawJson = response.getBody().getObject().toString();
-		rawJson = rawJson.substring(rawJson.indexOf('['));			// trims off leading '{'
+		rawJson = rawJson.substring(rawJson.indexOf('['));			// trims off leading '{' by going to first '['
 		int nextCardEndIndex = getNextCardEnd(rawJson);
 		Card nextCard;
 		while (nextCardEndIndex != -1)
 		{
 			nextCard = new Card(rawJson.substring(nextCardEndIndex));
-			cardList.add(nextCard);
+			if (nextCard.isPlayable())
+			{	cardList.add(nextCard);}
 			rawJson = rawJson.substring(nextCardEndIndex);
 			nextCardEndIndex = getNextCardEnd(rawJson);
 		}
 		return cardList;
 	}
 	
-	// UNTESTED
 	// PRE: rawJson is of the form {<card object>}, {<card object>}, ... i.e., no leading braces.
 	// POST: returns index after the end of the first card object, or -1 if there are no cards.
 	public static int getNextCardEnd(String rawJson)

@@ -34,8 +34,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     
     //Search Bar:
     JButton searchButton = new JButton("Search");
-    JTextField searchBar = new JTextField("Search");
-    
+    JTextField searchBar = new JTextField("Search");	//eventually make this search bar better. Grey search text, 
+    													//when you click it overwrites all. When you press enter it searches.
     //Card Lists:
     ArrayList<Card> searchCardArrayList = new ArrayList<Card>();
     ArrayList<Card> deckCardArrayList = new ArrayList<Card>();
