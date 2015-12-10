@@ -5,9 +5,12 @@ public class Card {
 	String name;		// card name, not always unique
 	String type;		// card type, (eg, Minion, Weapon, Spell...)
 	String text;		// text on card
+	String flavor;		// flavor text on card
 	String imgGold;		// url of gold card image
 	String img;			// url of regular card image
 	String cardSet;		// set the card came from
+	String playerClass;	// class permitted to play card; "neutral" if all
+	String race;		// race, if applicable, "" otherwise
 	int cost;			// mana cost of card
 	int attack;			// attack of card (-1 if not well defined)
 	int health;			// health of card (-1 if not well defined)
@@ -16,8 +19,9 @@ public class Card {
 	
 	public Card(String rawCardData)
 	{
-		cardId = name = type = text = imgGold = img = cardSet = ""; // setting all to default values
-		cost = attack = health = durability = -1;					// these are not always well defined. -1 is the flag for this.
+		cardId = name = type = text = race =
+				imgGold = img = cardSet = playerClass = ""; 		// setting all to default values
+		cost = attack = health = durability = -1;					// -1 is flag for no value
 		
 		int startIndex;
 		int endIndex;
@@ -85,6 +89,23 @@ public class Card {
 			cardSet = rawCardData.substring(startIndex, endIndex);
 		}
 		
+		// finding class of card
+		currentIndex = rawCardData.indexOf("\"playerClass\"");
+		if (currentIndex != -1)
+		{
+			startIndex = currentIndex + 15;
+			endIndex = rawCardData.indexOf("\"", startIndex);
+			cardSet = rawCardData.substring(startIndex, endIndex);
+		}
+		
+		// finding race of card
+		currentIndex = rawCardData.indexOf("\"race\"");
+		if (currentIndex != -1)
+		{
+			startIndex = currentIndex + 8;
+			endIndex = rawCardData.indexOf("\"", startIndex);
+			cardSet = rawCardData.substring(startIndex, endIndex);
+		}
 		// finding mana cost of card
 		currentIndex = rawCardData.indexOf("\"cost\"");
 		if (currentIndex != -1)
@@ -154,6 +175,13 @@ public class Card {
 		this.durability = durability;
 	}
 	
+	public boolean isPlayable()
+	{
+		if (type.equals("Hero") || type.equals("Hero Power") || 
+				cardSet.equals("Missions") || cardSet.equals("Tavern Brawl"))
+		{	return false;}
+		return true;
+	}
 	public static void main(String[] args)
 	{
 	}
