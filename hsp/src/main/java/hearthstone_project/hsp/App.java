@@ -22,6 +22,18 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 /**
  * GUI Application
+ * 
+ * BUGS:
+ * 	When removing a card from decklist it crashes.
+ * 	Words don't wrap correctly and the whole app resizes if the text gets too long on a line. Will prob ignore this bug.
+ * 	Cards in your deck list have brackets around the name.
+ * 	Can't do more than 1 search.
+ * 	(Both multiple searches and removing a card give an arraylist index out of bounds exception, so I would look into that.)
+ * 
+ * TODO:
+ * 	Get player search parameter working.
+ * 	Get drafting working.
+ * 	Eventually make this search bar better. Grey search text, when you click it overwrites all. When you press enter it searches. (LOW PRIORITY)
  */
 
 public class App extends Frame implements WindowListener,ActionListener,ItemListener
@@ -34,8 +46,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     
     //Search Bar:
     JButton searchButton = new JButton("Search");
-    JTextField searchBar = new JTextField("Search");	//eventually make this search bar better. Grey search text, 
-    													//when you click it overwrites all. When you press enter it searches.
+    JTextField searchBar = new JTextField("Search");
+    
     //Card Lists:
     ArrayList<Card> searchCardArrayList = new ArrayList<Card>();
     ArrayList<Card> deckCardArrayList = new ArrayList<Card>();
@@ -85,11 +97,11 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         addCardButton.addActionListener(this);
         removeCardButton.addActionListener(this);
         deckList.addListSelectionListener(new ListSelectionListener() {		//Used for deckList listener.
-            public void valueChanged(ListSelectionEvent arg0) {												//CURRENT BUG: When removing a card from decklist it crashes.
+            public void valueChanged(ListSelectionEvent arg0) {				//What happens when a new deck card is highlighted.										
                 if (!arg0.getValueIsAdjusting()) {
-                  cardInfo.setText(deckCardArrayList.get(deckList.getSelectedIndex()).toString());			//What happens when a new deck card is highlighted.
+                  cardInfo.setText(deckCardArrayList.get(deckList.getSelectedIndex()).toString());			
                     
-                  //PIC UPDATING:
+                  //Card pic updating:
                   try {
                 	  url = new URL(deckCardArrayList.get(deckList.getSelectedIndex()).img);
                 	  img.flush();
@@ -104,11 +116,11 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         });
         
         cardList.addListSelectionListener(new ListSelectionListener() {		//Used for cardList listener.
-            public void valueChanged(ListSelectionEvent arg0) {
+            public void valueChanged(ListSelectionEvent arg0) {				//What happens when a new search card is highlighted.	
                 if (!arg0.getValueIsAdjusting()) {
                   cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
                   
-                  //PIC UPDATING:
+                  //Card pic updating:                  
                   try {
                 	  url = new URL(searchCardArrayList.get(cardList.getSelectedIndex()).img);
                 	  img.flush();
@@ -141,7 +153,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 
         c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=1;
         cardInfo.setEditable(false);
-        cardInfo.setText("Welcome to Nate, Crockett and Max's Hearthstone deckbuilder!\nMaybe put some tutorial type of thing here!");
+        cardInfo.setText("Welcome to Nate, Crockett and Max's Hearthstone deckbuilder!\nMaybe put some tutorial type of thing here!\nOr the search flags.");
         add(cardInfo,c);
                 
         c.gridx=0;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
@@ -152,7 +164,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	}
  
     
-    //FRAME LISTENERS
+    //Frame Listeners:
     public void actionPerformed(ActionEvent arg0) {
     	if (arg0.getSource()==searchButton){				//If the search button is clicked
     		Search searcher = new Search();
@@ -160,34 +172,34 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     		String searchText = searchBar.getText();
     		searchResults = searcher.DoSearch(searchText);
     		cardInfo.setText(searchText);
-    		nameList.clear();
-    		boolean gold_img_display = searcher.gold_version;	//if user typed -g.
+    		boolean gold_img_display = searcher.gold_version;	//if user typed -g in search.
+    		
+    		//Trying to get second search to work:
     		nameList.clear();
     		searchCardArrayList.clear();
     		
     		for (Card c: searchResults)
     		{
     			String cardName = c.name;
-    			nameList.addElement(cardName);
-    			    			
-    			if (gold_img_display == true){				// make img the gold version.
-    				c.img=c.imgGold;
+    			nameList.addElement(cardName);   			
+    			if (gold_img_display == true){				//make img the gold version
+    				c.img=c.imgGold;						//if search requested it.
     			}
-    			
-    			
     			searchCardArrayList.add(c);
     		}     
     		
     	}
     	else if (arg0.getSource()==addCardButton){			//If the add card button is clicked
-    		String selectedAddCard = cardList.getSelectedValuesList().toString(); 
-    		decknameList.addElement(selectedAddCard);
-    		deckCardArrayList.add(searchCardArrayList.get(cardList.getSelectedIndex()));
+    		String selectedAddCard = cardList.getSelectedValuesList().toString(); 			//gets name from selected card.
+    		decknameList.addElement(selectedAddCard);										//adds name to name list
+    		deckCardArrayList.add(searchCardArrayList.get(cardList.getSelectedIndex()));	//adds card to card array list.
     		
     	}
     	
     	else if (arg0.getSource()==removeCardButton){		//If the remove card button is clicked
-    		decknameList.removeElementAt(deckList.getSelectedIndex());
+    		//currently not working.
+    		decknameList.removeElementAt(deckList.getSelectedIndex());						//remove from name list
+    		deckCardArrayList.remove(deckList.getSelectedIndex());							//remove from deck array list.
     	}
     }
     
@@ -197,7 +209,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         System.exit(0);		
 	}
     
-    //UNUSED LISTENERS
+    //Unused listeners:
     public void windowClosed(WindowEvent arg0) {}
 	public void windowActivated(WindowEvent arg0) {}
 	public void windowDeactivated(WindowEvent arg0) {}

@@ -16,13 +16,31 @@ SEARCH LANGUAGE
 			durability (if weapon)
 		-x <card text>
 			word in text of card
-			
-		ADDITIONS:
-		
 		-g <gold variation>
 			displays gold version of searched cards.
-		-generate
-		-class
+			
+			
+	NOT YET WORKING: 
+		-pc <player class>
+			search based on class
+		
+		-d <drafting deck>
+			draft an arena deck for a certain class.
+		
+		Classes:
+			ma = mage
+			hu = hunter
+			wk = warlock
+			wr = warrior
+			pr = priest
+			sh = shaman
+			pa = paladin 
+			ro = rogue
+			dr = druid
+		
+		ex: -d ma
+			-d hu	
+			-pc ro
 		
 			
 	Example Searches
