@@ -17,6 +17,8 @@ public class Search {
 		
 	}
 	
+	public boolean gold_version = false;
+	
 	//Returns all available Hearthstone cards including non collectible cards.
 	public HttpResponse<JsonNode> SearchAll(
 			int attack,
@@ -327,6 +329,11 @@ public class Search {
 			{
 				text = st.nextToken();
 			}
+			else if (nextToken.startsWith("-g"))
+			{
+				gold_version = true;
+			}
+
 	         
 	     }
 		HttpResponse<JsonNode> response = null;

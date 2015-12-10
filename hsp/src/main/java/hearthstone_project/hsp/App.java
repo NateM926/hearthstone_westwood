@@ -158,11 +158,20 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     		searchResults = searcher.DoSearch(searchText);
     		cardInfo.setText(searchText);
     		nameList.clear();
+    		boolean gold_img_display = searcher.gold_version;	//if user typed -g.
+    		nameList.clear();
+    		searchCardArrayList.clear();
     		
     		for (Card c: searchResults)
     		{
     			String cardName = c.name;
     			nameList.addElement(cardName);
+    			    			
+    			if (gold_img_display == true){				// make img the gold version.
+    				c.img=c.imgGold;
+    			}
+    			
+    			
     			searchCardArrayList.add(c);
     		}     
     		

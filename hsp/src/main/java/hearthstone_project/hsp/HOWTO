@@ -16,6 +16,15 @@ SEARCH LANGUAGE
 			durability (if weapon)
 		-x <card text>
 			word in text of card
+			
+		ADDITIONS:
+		
+		-g <gold variation>
+			displays gold version of searched cards.
+		-generate
+		-class
+		
+			
 	Example Searches
 		-n Wis : 
 			Searches for cards with "Wis" in their name 
