@@ -51,7 +51,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 	JButton removeCardButton = new JButton("Remove Card");
 
     //Pictures:
-    String IMG_PATH = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_023.png";		//"src/imp_gang_pic.png"
+    String IMG_PATH = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_023.png";
     URL url = new URL(IMG_PATH);
     BufferedImage img = ImageIO.read(url);
 	JLabel picLabel = new JLabel(new ImageIcon(img));
@@ -70,7 +70,8 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     }
     
 
-	public App(String title) throws IOException {			
+	public App(String title) throws IOException {	
+		
         setLayout(gridbag);
         c.fill = GridBagConstraints.BOTH;
         c.insets=padding;
@@ -94,16 +95,16 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
                   cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
                   
                   //PIC UPDATING
-                  try {	//BUG : Barely works - only if you try changing the card enough times, definitely a better way to do it. 
-                	  	//The pics are not clearing correctly. Once this part is fixed I'll add it to the deck list as well.
+                  try {
                 	  url = new URL(searchCardArrayList.get(cardList.getSelectedIndex()).img);
+                	  img.flush();
                 	  img = ImageIO.read(url);
-                	  picLabel = new JLabel(new ImageIcon(img));
-                	  cardPic = new JScrollPane(picLabel);
+                	  picLabel.setIcon(new ImageIcon(img));
                       c.gridx=1;c.gridy=1;c.gridwidth=3;c.gridheight=5;c.weightx=10;c.weighty=3;	//Pretty hacked :/ I tried putting less 
                       add(cardPic,c);																//in and it wouldn't work. Still barely works.
                   } 
                   catch (IOException e) {
+                	  System.out.println("MISTAKE");
                   }
                 }
             }
