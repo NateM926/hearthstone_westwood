@@ -242,7 +242,7 @@ public class Search {
 	{
 		ArrayList<Card> cardList = new ArrayList<Card>();
 		String rawJson = response.getBody().getObject().toString();
-		rawJson = rawJson.substring(rawJson.indexOf('['));			// trims off leading '{' by going to first '['
+		rawJson = rawJson.substring(rawJson.indexOf('{') + 1);			// trims off leading '{'
 		int nextCardEndIndex = getNextCardEnd(rawJson);
 		Card nextCard;
 		while (nextCardEndIndex != -1)

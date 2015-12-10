@@ -106,6 +106,7 @@ public class Card {
 			endIndex = rawCardData.indexOf("\"", startIndex);
 			cardSet = rawCardData.substring(startIndex, endIndex);
 		}
+		
 		// finding mana cost of card
 		currentIndex = rawCardData.indexOf("\"cost\"");
 		if (currentIndex != -1)
