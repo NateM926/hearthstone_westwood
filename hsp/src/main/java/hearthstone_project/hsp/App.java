@@ -74,8 +74,11 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 		
         setLayout(gridbag);
         c.fill = GridBagConstraints.BOTH;
-        c.insets=padding;
-
+        c.insets = padding;
+        picLabel.setOpaque(true);
+        picLabel.setBackground(Color.BLACK);
+        
+        
         //Adding listeners
         addWindowListener(this);
         searchButton.addActionListener(this);
