@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -23,11 +24,9 @@ import com.mashape.unirest.http.exceptions.UnirestException;
  * GUI Application
  * 
  * BUGS:
- * 	When removing a card from decklist it crashes.
  * 	Words don't wrap correctly and the whole app resizes if the text gets too long on a line. Will prob ignore this bug.
  * 	Cards in your deck list have brackets around the name.
- * 	Can't do more than 1 search.
- * 	(Both multiple searches and removing a card give an arraylist index out of bounds exception, so I would look into that.)
+ *  Small bug where if you remove twice without changing the deck list current card it will return an array index out of bounds.
  * 
  * TODO:
  * 	Get player search parameter working.
@@ -96,39 +95,46 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
         addCardButton.addActionListener(this);
         removeCardButton.addActionListener(this);
         deckList.addListSelectionListener(new ListSelectionListener() {		//Used for deckList listener.
-            public void valueChanged(ListSelectionEvent arg0) {				//What happens when a new deck card is highlighted.										
-                if (!arg0.getValueIsAdjusting()) {
-                  cardInfo.setText(deckCardArrayList.get(deckList.getSelectedIndex()).toString());			
-                    
-                  //Card pic updating:
-                  try {
-                	  url = new URL(deckCardArrayList.get(deckList.getSelectedIndex()).img);
-                	  img.flush();
-                	  img = ImageIO.read(url);
-                	  picLabel.setIcon(new ImageIcon(img));
-                  } 
-                  catch (IOException e) {
-                	  System.out.println("can't get the pic url.");
-                  }
+        	public void valueChanged(ListSelectionEvent arg0) {				//What happens when a new deck card is highlighted.										
+            	if (!arg0.getValueIsAdjusting()) {	
+	                if (deckList.getSelectedIndex()==-1){					//For when the selected value is lost during clear() functions.
+	                	return;
+	                }
+			        cardInfo.setText(deckCardArrayList.get(deckList.getSelectedIndex()).toString());			
+			            
+		        	//Card pic updating:
+		        	try {
+		        		URL url = new URL(deckCardArrayList.get(deckList.getSelectedIndex()).img);
+		        		img.flush();
+		        		img = ImageIO.read(url);
+		        		picLabel.setIcon(new ImageIcon(img));
+		        	} 
+		        	catch (IOException e) {
+		        		System.out.println("can't get the pic url.");
+		        	}
                 }
             }
         });
         
         cardList.addListSelectionListener(new ListSelectionListener() {		//Used for cardList listener.
-            public void valueChanged(ListSelectionEvent arg0) {				//What happens when a new search card is highlighted.	
-                if (!arg0.getValueIsAdjusting()) {
-                  cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
-                  
-                  //Card pic updating:                  
-                  try {
-                	  url = new URL(searchCardArrayList.get(cardList.getSelectedIndex()).img);
-                	  img.flush();
-                	  img = ImageIO.read(url);
-                	  picLabel.setIcon(new ImageIcon(img));
-                  } 
-                  catch (IOException e) {
-                	  System.out.println("can't get the pic url.");
-                  }
+        	public void valueChanged(ListSelectionEvent arg0) {				//What happens when a new search card is highlighted.	
+        		if (!arg0.getValueIsAdjusting()) {
+	                if (cardList.getSelectedIndex()==-1){					//For when the selected value is lost during clear() functions.
+	                	return;
+	                }
+        			cardInfo.setText(searchCardArrayList.get(cardList.getSelectedIndex()).toString());
+
+	                //Card pic updating:                  
+	                try {
+	                	URL url = new URL(searchCardArrayList.get(cardList.getSelectedIndex()).img);
+	                	img.flush();
+	                	img = ImageIO.read(url);
+	                	picLabel.setIcon(new ImageIcon(img));
+	                  	} 
+	                catch (IOException e) {
+	                	System.out.println("can't get the pic url.");
+	                }
+	                
                 }
             }
             
@@ -165,39 +171,38 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     
     //Frame Listeners:
     public void actionPerformed(ActionEvent arg0) {
-    	if (arg0.getSource()==searchButton){				//If the search button is clicked
+    	if (arg0.getSource()==searchButton){					//If the search button is clicked
     		Search searcher = new Search();
     		ArrayList<Card> searchResults = new ArrayList<Card>();
     		String searchText = searchBar.getText();
     		searchResults = searcher.DoSearch(searchText);
     		boolean gold_img_display = searcher.gold_version;	//if user typed -g in search.
     		
-    		//Trying to get second search to work:
-    		nameList.clear();
+    		nameList.clear();									
     		searchCardArrayList.clear();
     		
     		for (Card c: searchResults)
     		{
     			String cardName = c.name;
     			nameList.addElement(cardName);   			
-    			if (gold_img_display == true){				//make img the gold version
-    				c.img=c.imgGold;						//if search requested it.
+    			if (gold_img_display == true){					//make img the gold version
+    				c.img=c.imgGold;							//if search requested it.
     			}
     			searchCardArrayList.add(c);
     		}     
     		
     	}
-    	else if (arg0.getSource()==addCardButton){			//If the add card button is clicked
+    	else if (arg0.getSource()==addCardButton){				//If the add card button is clicked
     		String selectedAddCard = cardList.getSelectedValuesList().toString(); 			//gets name from selected card.
     		decknameList.addElement(selectedAddCard);										//adds name to name list
     		deckCardArrayList.add(searchCardArrayList.get(cardList.getSelectedIndex()));	//adds card to card array list.
     		
     	}
     	
-    	else if (arg0.getSource()==removeCardButton){		//If the remove card button is clicked
-    		//currently not working.
-    		decknameList.removeElementAt(deckList.getSelectedIndex());						//remove from name list
-    		deckCardArrayList.remove(deckList.getSelectedIndex());							//remove from deck array list.
+    	else if (arg0.getSource()==removeCardButton){			//If the remove card button is clicked
+    		int cardIndex = deckList.getSelectedIndex();
+    		decknameList.removeElementAt(cardIndex);			//remove from name list
+    		deckCardArrayList.remove(cardIndex);				//remove from deck array list.
     	}
     }
     
