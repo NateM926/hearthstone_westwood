@@ -17,7 +17,8 @@ public class Search {
 		
 	}
 	
-	public boolean gold_version = false;
+	public boolean gold_version = false;		//Tells the app whether or not the card should be gold.
+	public boolean draft = false;				//Tells app whether it's a draft search or not.
 	
 	//Returns all available Hearthstone cards including non collectible cards.
 	public HttpResponse<JsonNode> SearchAll(
@@ -351,6 +352,12 @@ public class Search {
 			else if (nextToken.startsWith("-g"))
 			{
 				gold_version = true;
+			}
+			else if (nextToken.startsWith("-draft")){
+				String playerClass=st.nextToken();
+				draft = true;
+				//call crockett's method with playerclass info.
+				//return cardlist here.
 			}
 
 	         

@@ -22,15 +22,10 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 /**
  * GUI Application
  * 
- * BUGS:
- * 	Words don't wrap correctly and the whole app resizes if the text gets too long on a line. Will prob ignore this bug.
+ * BUGS (all that are left are very minor):
+ * 	Words don't wrap correctly and the whole app resizes if the text gets too long on a line.
  * 	Cards in your deck list have brackets around the name.
  *  Small bug where if you remove twice without changing the deck list current card it will return an array index out of bounds.
- * 
- * TODO:
- * 	Get player search parameter working.
- * 	Get drafting working.
- * 	Eventually make this search bar better. Grey search text, when you click it overwrites all. When you press enter it searches. (LOW PRIORITY)
  */
 
 public class App extends Frame implements WindowListener,ActionListener,ItemListener
@@ -179,6 +174,18 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     		
     		nameList.clear();									
     		searchCardArrayList.clear();
+    		
+    		if (searcher.draft==true){				//specifically for arena card drafting.
+    			for (Card c:searchResults){
+        			String cardName = c.name;
+        			decknameList.addElement(cardName);   			
+        			if (gold_img_display == true){				//make img the gold version
+        				c.img=c.imgGold;						//if search requested it.
+        			}
+        			deckCardArrayList.add(c);
+    			}
+    			return;											//escapes so it doesn't go on to the search cards.
+    		}
     		
     		for (Card c: searchResults)
     		{
