@@ -22,7 +22,12 @@ public class TierValues {
 		warlockVal = -1;
 		warriorVal = -1;
 	}
-
+	public String toString(){
+		return "(" + druidVal + ", " + hunterVal + ", "
+				+ mageVal + ", " + paladinVal + ", " 
+				+ priestVal + ", " + rogueVal + ", " 
+				+ shamanVal + ", " + warlockVal + ", " + warriorVal + ")";
+	}
 	public int getDruidVal() {
 		return druidVal;
 	}
@@ -94,5 +99,4 @@ public class TierValues {
 	public void setWarriorVal(int warriorVal) {
 		this.warriorVal = warriorVal;
 	}
-	
 }

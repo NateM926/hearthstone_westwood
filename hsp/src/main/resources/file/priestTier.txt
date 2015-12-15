@@ -1,0 +1,648 @@
+North Sea Kraken
+86
+Power Word: Shield
+84
+Dark Cultist
+80
+Piloted Shredder
+80
+Temple Enforcer
+80
+Dark Iron Dwarf
+76
+Holy Nova
+76
+Shadow Word: Death
+76
+Velen's Chosen
+76
+Zombie Chow
+76
+Shrinkmeister
+72
+Entomb
+70
+Flame Juggler
+70
+Mechanical Yeti
+70
+Mind Control
+70
+Northshire Cleric
+70
+Shadow Word: Pain
+70
+Silver Hand Knight
+70
+Spider Tank
+70
+Stormwind Champion
+70
+Stranglethorn Tiger
+70
+Boulderfist Ogre
+68
+Chillwind Yeti
+68
+Earthen Ring Farseer
+68
+Frost Elemental
+68
+Gilblin Stalker
+68
+Harvest Golem
+68
+Haunted Creeper
+68
+Holy Champion
+68
+Pit Fighter
+68
+Sen'jin Shieldmasta
+68
+Shattered Sun Cleric
+68
+Argent Horserider
+66
+Evil Heckler
+66
+Mad Bomber
+66
+Ogre Brute
+66
+Spellbreaker
+66
+Darkscale Healer
+64
+Drakonid Crusher
+64
+Lightspawn
+64
+Scarlet Crusader
+64
+Worgen Infiltrator
+64
+Kvaldir Raider
+62
+Loot Hoarder
+62
+Tomb Spider
+62
+Acolyte of Pain
+60
+Amani Berserker
+60
+Clockwork Knight
+60
+Cult Master
+60
+Fen Creeper
+60
+Force-Tank MAX
+60
+Gnomish Inventor
+60
+Holy Smite
+60
+Hungry Dragon
+60
+Silent Knight
+60
+Thoughtsteal
+60
+Abusive Sergeant
+58
+Captured Jormungar
+58
+Frostwolf Warlord
+58
+Acidic Swamp Ooze
+56
+Argent Squire
+56
+Boneguard Lieutenant
+56
+Burly Rockjaw Trogg
+56
+Dire Wolf Alpha
+56
+Dragonkin Sorcerer
+56
+Huge Toad
+56
+Jeweled Scarab
+56
+Jungle Panther
+56
+Mechwarper
+56
+Silver Hand Regent
+56
+Spectral Knight
+56
+Stonesplinter Trogg
+56
+Stormpike Commando
+56
+Stormwind Knight
+56
+Annoy-o-Tron
+54
+Anubisath Sentinel
+54
+Faerie Dragon
+54
+Lost Tallstrider
+54
+Raging Worgen
+54
+Venture Co. Mercenary
+54
+Bloodsail Raider
+52
+Novice Engineer
+52
+Razorfen Hunter
+52
+River Crocolisk
+52
+Ship's Cannon
+52
+Spiteful Smith
+52
+Archmage
+50
+Bloodfen Raptor
+50
+Elven Archer
+50
+Lord of the Arena
+50
+Maiden of the Lake
+50
+Micro Machine
+50
+Puddlestomper
+50
+Refreshment Vendor
+50
+Volcanic Drake
+50
+War Golem
+50
+Dragonhawk Rider
+48
+Flesheating Ghoul
+48
+Frigid Snobold
+48
+Ironfur Grizzly
+48
+Lance Carrier
+48
+Silvermoon Guardian
+48
+Youthful Brewmaster
+48
+Ancient Brewmaster
+46
+Bluegill Warrior
+46
+Clockwork Gnome
+46
+Ogre Magi
+46
+Wolfrider
+46
+Blackwing Corruptor
+44
+Blackwing Technician
+44
+Gadgetzan Jouster
+44
+Gurubashi Berserker
+44
+Mind Vision
+44
+Mukla's Champion
+44
+Reckless Rocketeer
+44
+Tinkertown Technician
+44
+Unstable Ghoul
+44
+Dragonling Mechanic
+42
+Ice Rager
+42
+Oasis Snapjaw
+42
+Voodoo Doctor
+42
+Circle of Healing
+40
+Divine Spirit
+40
+Gorillabot A-3
+40
+Ironbeak Owl
+40
+Ironforge Rifleman
+40
+Murloc Tidehunter
+40
+Salty Dog
+40
+Silence
+40
+Booty Bay Bodyguard
+38
+Mogu'shan Warden
+38
+Nerub'ar Weblord
+38
+Antique Healbot
+36
+Leper Gnome
+36
+Nightblade
+36
+Gnomeregan Infantry
+34
+Stonetusk Boar
+34
+Twilight Whelp
+34
+Cogmaster
+32
+Dancing Swords
+32
+Kobold Geomancer
+32
+Tournament Attendee
+32
+Explosive Sheep
+30
+Frostwolf Grunt
+30
+Inner Fire
+30
+Lowly Squire
+30
+Murloc Raider
+30
+Raid Leader
+30
+Southsea Deckhand
+30
+Core Hound
+28
+Tournament Medic
+28
+Priestess of Elune
+26
+Windfury Harpy
+26
+Flash Heal
+24
+Mad Scientist
+24
+Tauren Warrior
+24
+Undertaker
+24
+Goldshire Footman
+22
+Shieldbearer
+22
+Dread Corsair
+20
+Silverback Patriarch
+16
+Murloc Tinyfin
+14
+Thrallmar Farseer
+14
+Dalaran Mage
+12
+Flying Machine
+12
+Magma Rager
+12
+Wisp
+12
+Power Word: Glory
+10
+Young Dragonhawk
+6
+Grimscale Oracle
+4
+Stoneskin Gargoyle
+4
+Mind Blast
+2
+Sunwalker
+84
+Bomb Lobber
+80
+Sludge Belcher
+80
+Stampeding Kodo
+80
+Argent Commander
+78
+Azure Drake
+78
+Auchenai Soulpriest
+76
+Knife Juggler
+76
+Defender of Argus
+70
+Shadow Madness
+70
+Madder Bomber
+68
+Imp Master
+66
+Mind Control Tech
+66
+Twilight Drake
+66
+Violet Teacher
+66
+Saboteur
+64
+Emperor Cobra
+62
+Injured Blademaster
+62
+Light of the Naaru
+62
+Master Jouster
+62
+Upgraded Repair Bot
+62
+Ancient Shade
+60
+Holy Fire
+60
+Shadowboxer
+60
+Wild Pyromancer
+60
+Lightwarden
+58
+Light's Champion
+56
+Questing Adventurer
+56
+Excavated Evil
+54
+Sunfury Protector
+54
+Resurrect
+52
+Arcane Golem
+50
+Coliseum Manager
+50
+Crazed Alchemist
+50
+Young Priestess
+50
+Gnomish Experimenter
+48
+Ravenholdt Assassin
+48
+Spawn of Shadows
+48
+Wailing Soul
+48
+Armored Warhorse
+46
+Deathlord
+46
+Demolisher
+46
+Abomination
+44
+Arcane Nullifier X-21
+44
+Kezan Mystic
+42
+Mass Dispel
+42
+Pint-Sized Summoner
+42
+Convert
+40
+Goblin Sapper
+40
+Illuminator
+40
+Injured Kvaldir
+40
+Lil' Exorcist
+40
+Wyrmrest Agent
+40
+Gadgetzan Auctioneer
+38
+Fencing Coach
+36
+Nerubian Egg
+36
+Jeeves
+32
+Cabal Shadow Priest
+120
+Lightbomb
+82
+Sea Giant
+82
+Piloted Sky Golem
+78
+Grand Crusader
+74
+Fel Reaver
+70
+Kodorider
+70
+Shade of Naxxramas
+70
+Blood Knight
+66
+Big Game Hunter
+64
+Frost Giant
+60
+Faceless Manipulator
+58
+Djinni of Zephyrs
+56
+Garrison Commander
+56
+Recombobulator
+56
+Crowd Favorite
+54
+Echoing Ooze
+54
+Shadowfiend
+48
+Shadowform
+46
+Molten Giant
+44
+Recruiter
+44
+Shadowbomber
+40
+Southsea Captain
+40
+Twilight Guardian
+40
+Master of Ceremonies
+38
+Murloc Warleader
+38
+Naga Sea Witch
+38
+Hobgoblin
+36
+Enhance-o Mechano
+34
+Mindgames
+34
+Mountain Giant
+34
+Confuse
+30
+Doomsayer
+30
+Dr. Boom
+130
+Deathwing
+100
+Onyxia
+100
+Vol'jin
+100
+Baron Geddon
+92
+Ragnaros the Firelord
+92
+Sylvanas Windrunner
+88
+Kel'Thuzad
+86
+Nexus-Champion Saraad
+86
+Confessor Paletress
+84
+Ysera
+84
+Nefarian
+82
+Cairne Bloodhoof
+80
+Alexstrasza
+78
+Eydis Darkbane
+78
+Fjola Lightbane
+76
+Foe Reaper 4000
+76
+Hogger
+76
+Toshley
+76
+Troggzor the Earthinator
+74
+Feugen
+72
+Sneed's Old Shredder
+72
+Chromaggus
+70
+Icehowl
+70
+The Black Knight
+70
+Illidan Stormrage
+66
+Loatheb
+66
+Maexxna
+66
+Prophet Velen
+66
+Mogor the Ogre
+64
+Gruul
+62
+Emperor Thaurissan
+60
+King Mukla
+60
+Mekgineer Thermaplugg
+60
+Harrison Jones
+58
+Tinkmaster Overspark
+56
+Chillmaw
+54
+Gormok the Impaler
+54
+Hemet Nesingwary
+54
+Malygos
+54
+Reno Jackson
+52
+Bloodmage Thalnos
+50
+Sir Finley Mrrgglton
+50
+The Beast
+50
+Brann Bronzebeard
+48
+Leeroy Jenkins
+46
+Skycap'n Kragg
+46
+Blingtron 3000
+44
+Bolf Ramshield
+44
+Justicar Trueheart
+44
+Mimiron's Head
+44
+The Skeleton Knight
+42
+Majordomo Executus
+40
+Stalagg
+40
+Nozdormu
+38
+Gazlowe
+32
+Baron Rivendare
+30
+Millhouse Manastorm
+30
+Captain Greenskin
+28
+Nat Pagle
+22
+Rend Blackhand
+20
+Lorewalker Cho
+12
