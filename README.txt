@@ -6,7 +6,7 @@ SEARCH LANGUAGE
 	Flags
 		
 	-n <name>
-		name of card - must be full name, and no other search parameters. (e.g. Wisp, p, a)
+		name of card - must be full name, and no other search parameters. (e.g. Wisp)
 	-t <type>
 		type of card (Minion, Weapon, Spell...)
 	-a <attack>
@@ -21,9 +21,9 @@ SEARCH LANGUAGE
 		durability (if weapon)
 	-x <card text>
 		word in text of card
-	-g <gold variation>
+	-g
 		displays gold version of searched cards.	
-	-draft <drafting deck>
+	-draft <player class>
 		draft an arena deck for a certain class.
 		
 	Classes:
@@ -41,8 +41,8 @@ SEARCH LANGUAGE
 		-draft hu
 			
 	Example Searches
-		-n Wis : 
-			Searches for cards with "Wis" in their name 
+		-n Wisp : 
+			Searches for cards with "Wisp" in their name 
 		-s basic -c 3 :
 			Searches for basic set cards with a cost of 3
 		
