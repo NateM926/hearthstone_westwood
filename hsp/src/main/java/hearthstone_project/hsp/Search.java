@@ -258,6 +258,25 @@ public class Search {
 		return cardList;
 	}
 	
+	
+	public static ArrayList<Card> getCardListName(HttpResponse<JsonNode> response)
+	{
+		ArrayList<Card> cardList = new ArrayList<Card>();
+		String rawJson = response.getBody().toString();
+		rawJson = rawJson.substring(rawJson.indexOf('{') + 1);			// trims off leading '{'
+		int nextCardEndIndex = getNextCardEnd(rawJson);
+		Card nextCard;
+		while (nextCardEndIndex != -1)
+		{
+			nextCard = new Card(rawJson.substring(0, nextCardEndIndex));
+			if (nextCard.isPlayable())
+			{	cardList.add(nextCard);}
+			rawJson = rawJson.substring(nextCardEndIndex);
+			nextCardEndIndex = getNextCardEnd(rawJson);
+		}
+		return cardList;
+	}
+	
 	// PRE: rawJson is of the form {<card object>}, {<card object>}, ... i.e., no leading braces.
 	// POST: returns index after the end of the first card object, or -1 if there are no cards.
 	public static int getNextCardEnd(String rawJson)
@@ -336,13 +355,33 @@ public class Search {
 
 	         
 	     }
-		HttpResponse<JsonNode> response = null;
+		HttpResponse<JsonNode> responseAll = null;
+		HttpResponse<JsonNode> responseName = null;
 		try {
-			response = SearchAll(attack, 1, cost, durability, health);
+			responseAll = SearchAll(attack, 1, cost, durability, health);
+			if (name != null)
+			{
+				responseName = SearchName(name, 1);
+			}
+		
 		} catch (UnirestException e) {
 			//handle exception
 		}
-		ArrayList<Card> cardList = getCardList(response);
+		ArrayList<Card> cardList = new ArrayList<Card>();
+		ArrayList<Card> cardListName;
+		ArrayList<Card> cardListAll;
+	
+		if (name != null)
+		{
+			cardListName = getCardListName(responseName);
+			cardList.addAll(cardListName);
+		}
+		else 
+		{
+			cardListAll = getCardList(responseAll);
+			cardList.addAll(cardListAll);
+		}
+		
 		//System.out.println(cardList.toString());
 		return cardList;
 	}
