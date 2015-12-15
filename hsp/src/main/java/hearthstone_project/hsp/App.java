@@ -9,7 +9,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -158,7 +157,7 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
 
         c.gridx=1;c.gridy=6;c.gridwidth=3;c.gridheight=1;c.weightx=0;c.weighty=1;
         cardInfo.setEditable(false);
-        cardInfo.setText("Welcome to Nate, Crockett and Max's Hearthstone deckbuilder!\nMaybe put some tutorial type of thing here!\nOr the search flags.");
+        cardInfo.setText("Welcome to Nate, Crockett and Max's Hearthstone deckbuilder!");
         add(cardInfo,c);
                 
         c.gridx=0;c.gridy=7;c.gridwidth=1;c.gridheight=1;c.weightx=0;c.weighty=0;
