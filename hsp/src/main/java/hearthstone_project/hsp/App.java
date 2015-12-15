@@ -166,16 +166,22 @@ public class App extends Frame implements WindowListener,ActionListener,ItemList
     //Frame Listeners:
     public void actionPerformed(ActionEvent arg0) {
     	if (arg0.getSource()==searchButton){					//If the search button is clicked
+    		nameList.clear();									
+    		searchCardArrayList.clear();
+
     		Search searcher = new Search();
     		ArrayList<Card> searchResults = new ArrayList<Card>();
     		String searchText = searchBar.getText();
+    		
+    		nameList.clear();									//empty out list we're going to be inserting into.
+    		searchCardArrayList.clear();						//empty out list we're going to be inserting into.
+    		
     		searchResults = searcher.DoSearch(searchText);
     		boolean gold_img_display = searcher.gold_version;	//if user typed -g in search.
-    		
-    		nameList.clear();									
-    		searchCardArrayList.clear();
-    		
-    		if (searcher.draft==true){				//specifically for arena card drafting.
+    		    		
+    		if (searcher.draft==true){							//specifically for arena card drafting.
+    			decknameList.clear();							//empty out list we're going to be inserting into.
+    			deckCardArrayList.clear();						//empty out list we're going to be inserting into.
     			for (Card c:searchResults){
         			String cardName = c.name;
         			decknameList.addElement(cardName);   			
