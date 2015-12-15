@@ -164,7 +164,6 @@ public class TierList {
 				if (!search.isEmpty()){
 					card1 = search.get(0);}
 				else {
-					System.out.println(cardNames[index1]);
 					throw new Exception();
 				}
 				// search for the name of the card at index2
