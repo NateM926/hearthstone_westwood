@@ -55,7 +55,7 @@ public class TierList {
 					val = val.trim();
 					if (map.containsKey(key))
 					{
-						newTierVal = map.get(key);
+						newTierVal = map.get(key);	
 					}
 					else
 					{
@@ -150,43 +150,47 @@ public class TierList {
 		}
 		for (int i = 0; i < 30; i++)			// adds 30 cards to the deck
 		{
-			index1 = rand.nextInt(cardNames.length);	// picks first card from 
+			index1 = rand.nextInt(cardNames.length);		// picks card at random from keys in tierList
 			do {
-				index2 = rand.nextInt(cardNames.length);
+				index2 = rand.nextInt(cardNames.length);	// picks another, not equal to first
 			} while (index2 == index1);
-			
 			do {
-				index3 = rand.nextInt(cardNames.length);
+				index3 = rand.nextInt(cardNames.length);	// picks another, not equal to first two
 			} while(index3 == index1 || index3 == index2);
+
 			try {
-				ArrayList<Card> search;
-				search = Search.getCardListName(searcher.SearchName(cardNames[index1], 1));
+				// search for the name of the card at index1
+				ArrayList<Card> search = Search.getCardListName(searcher.SearchName(cardNames[index1], 1));
 				if (!search.isEmpty()){
 					card1 = search.get(0);}
 				else {
 					System.out.println(cardNames[index1]);
 					throw new Exception();
 				}
+				// search for the name of the card at index2
 				search = Search.getCardListName(searcher.SearchName(cardNames[index2], 1));
 				if (!search.isEmpty()){
 					card2 = search.get(0);}
 				else {
-					System.out.println(cardNames[index2]);
 					throw new Exception();
 				}
+				// search for the name of the card at index3
 				search = Search.getCardListName(searcher.SearchName(cardNames[index3], 1));
 				if (!search.isEmpty()){
 					card3 = search.get(0);}
 				else {
-					System.out.println(cardNames[index3]);
 					throw new Exception();
 				}
+				
+				// if card1 is the best, add card1 to deck
 				if (getValue(card1.name, playerClass) >= getValue(card2.name, playerClass) && getValue(card1.name, playerClass) >= getValue(card3.name, playerClass)){
 					deck.add(card1);
 				}
+				// if card2 is the best, add card2 to deck
 				else if (getValue(card2.name, playerClass) >= getValue(card3.name, playerClass)){
 					deck.add(card2);
 				}
+				// otherwise, add card3 to deck
 				else{
 					deck.add(card3);
 				}
@@ -196,18 +200,14 @@ public class TierList {
 				System.out.println(e.toString());
 			}
 			catch (IndexOutOfBoundsException e){
-				i--;
+				i--;							// this loop failed, do over
 				System.out.println(e.toString());
 			}
-			catch (Exception e){
-				i--;
-			}
+			catch (Exception e){	// we threw this exception to show that card addition
+				i--;				//	failed; i-- makes it loop through again, as it has 
+			}						//	not added a card to the deck.
 		}	// exit for loop (30 cards inserted into deck)
 		return deck;
-	}
-	public static void main(String[] args){
-		TierList myTierList = BuildTierList();
-		System.out.print(myTierList.draftDeck("ma"));
 	}
 }
 
